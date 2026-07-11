@@ -177,6 +177,14 @@
   animation: marquee 30s linear infinite;
 }
 
+/* Zova logo — swap raster by OS theme (light-bg PNG in light mode, dark-bg PNG in dark mode) */
+.zova-mark-light { display: block; }
+.zova-mark-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  .zova-mark-light { display: none; }
+  .zova-mark-dark { display: block; }
+}
+
 html {
   scrollbar-width: thin;
   scrollbar-color: rgba(109, 77, 255, 0.5) transparent;
