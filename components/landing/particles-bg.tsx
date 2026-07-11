@@ -38,7 +38,7 @@ export function ParticlesBg() {
             },
             number: {
               value: 35,
-              density: { enable: true, area: 900 },
+              density: { enable: true, width: 900, height: 900 },
             },
             opacity: {
               value: { min: 0.06, max: 0.22 },

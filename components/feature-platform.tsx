@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'motion/react'
+import { motion, type Variants } from 'motion/react'
 import { SectionLabel } from '@/components/landing/section-label'
 
 const features = [
@@ -34,12 +34,12 @@ const features = [
   },
 ]
 
-const row = {
+const row: Variants = {
   hidden: { opacity: 0, y: 12 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.08, duration: 0.45, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { delay: i * 0.08, duration: 0.45, ease: [0.25, 0.1, 0.25, 1] as const },
   }),
 }
 
