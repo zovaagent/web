@@ -107,7 +107,7 @@ export function HeroSection() {
         >
           Zone of Virtual
           <br />
-          <span className="text-white/35">Economy.</span>
+          <span className="text-white/35">Autonomy.</span>
         </TimelineAnimation>
 
         {/* Subtitle */}
