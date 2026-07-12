@@ -9,6 +9,7 @@ import { TimelineAnimation } from '@/components/timeline-animation'
 import { Button } from '@/components/ui/button'
 import { ParticlesBg } from '@/components/landing/particles-bg'
 import { CountUp } from '@/components/count-up'
+import { ZovaWordmark } from '@/components/landing/zova-wordmark'
 const fadeUp: Variants = {
   visible: (i: number) => ({
     opacity: 1,
@@ -135,7 +136,7 @@ export function HeroSection() {
             nativeButton={false}
             className="bg-white text-[#07070f] hover:bg-white/90 border-0 px-8 h-11 gap-2 font-semibold text-sm"
           >
-            Enter ZOVA
+            Enter <ZovaWordmark height={12} className="inline-block align-[-0.1em] ml-1 text-[#07070f]" />
             <ArrowRight className="h-4 w-4" />
           </Button>
           <Button

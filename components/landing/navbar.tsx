@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { FaXTwitter, FaTelegram } from "react-icons/fa6";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ZovaLogo } from "./zova-logo";
+import { ZovaWordmark } from "./zova-wordmark";
 
 const navLinks = [
   { label: "Platform", href: "#platform" },
@@ -30,12 +31,12 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-screen border-b border-white/10 bg-[#05050a]/90 backdrop-blur-md font-sans">
+    <header className="fixed left-0 top-0 z-50 w-screen border-b border-white/10 bg-[#05050a] font-sans">
       <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex shrink-0 items-center gap-2.5">
-            <ZovaLogo idPrefix="nav-main" />
-            <span className="font-azonix text-base tracking-tight text-white">ZOVA</span>
+            <ZovaLogo idPrefix="nav-main" size={30} />
+            <ZovaWordmark height={20} className="text-white" />
           </Link>
 
           <span aria-hidden="true" className="hidden text-white/20 lg:inline">/</span>
@@ -96,8 +97,8 @@ export function Navbar() {
             <div className="flex h-full flex-col">
               <div className="flex items-center justify-between border-b border-white/10 p-4">
                 <div className="flex items-center gap-2">
-                  <ZovaLogo idPrefix="nav-mobile" />
-                  <span className="font-azonix text-base text-white">ZOVA</span>
+                  <ZovaLogo idPrefix="nav-mobile" size={30} />
+                  <ZovaWordmark height={20} className="text-white" />
                 </div>
                 <button
                   onClick={() => setOpen(false)}

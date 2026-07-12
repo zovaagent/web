@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { ZovaLogo } from '@/components/landing/zova-logo'
+import { ZovaWordmark } from '@/components/landing/zova-wordmark'
 
 export const FooterPrivilege = () => {
   return (
@@ -14,8 +15,8 @@ export const FooterPrivilege = () => {
             Intelligence.
           </h2>
           <div className="mt-16 flex items-center gap-3">
-            <ZovaLogo size={32} idPrefix="footer-priv" />
-            <span className="text-lg font-azonix tracking-tight">ZOVA</span>
+            <ZovaLogo size={40} idPrefix="footer-priv" />
+            <ZovaWordmark height={26} className="text-white" />
           </div>
           <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/35">
             Intelligence infrastructure for autonomous AI systems.
@@ -29,7 +30,7 @@ export const FooterPrivilege = () => {
             Builders.
           </h2>
           <p className="max-w-md text-sm font-light leading-relaxed text-white/40">
-            <span className="font-azonix">ZOVA</span> turns raw blockchain data into structured context that AI agents
+            <ZovaWordmark height={12} className="inline-block align-middle" /> turns raw blockchain data into structured context that AI agents
             can reason over. REST API, webhooks, SDK — production-ready from day one.
           </p>
           <div className="flex items-center gap-4">
@@ -50,7 +51,7 @@ export const FooterPrivilege = () => {
       </div>
 
       <div className="mx-auto mt-24 flex max-w-7xl flex-col justify-between gap-4 border-t border-[rgba(12,18,34,0.08)] pt-8 text-[10px] font-medium uppercase tracking-[0.3em] text-zinc-400 md:flex-row">
-        <p>© 2025 <span className="font-azonix">ZOVA</span> Inc.</p>
+        <p className="inline-flex items-center gap-1.5">© 2025 <ZovaWordmark height={10} /> Inc.</p>
         <p>Intelligence Infrastructure · Blockchain × AI</p>
         <div className="flex items-center gap-8">
           <Link href="#" className="transition-colors hover:text-zinc-600">Privacy</Link>

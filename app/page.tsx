@@ -7,6 +7,7 @@ import { BoldStats } from "@/components/stats-bold";
 import { HowItWorks } from "@/components/landing/how-it-works";
 import { FaqInteractivePreview } from "@/components/faq-interactive-preview";
 import { Footer10 } from "@/components/ui/footer-10";
+import { ZovaWordmark } from "@/components/landing/zova-wordmark";
 
 export default function HomePage() {
   return (
@@ -24,14 +25,14 @@ export default function HomePage() {
       <Footer10
         bannerTagline="Trusted by Builders"
         bannerHeading="Interested in working together, trying out the platform or simply learning more?"
-        bannerCtaLabel="Enter ZOVA"
+        bannerCtaLabel={<>Enter <ZovaWordmark height={12} className="inline-block align-[-0.1em] ml-1" /></>}
         bannerCtaHref="#"
         contactLabel="Reach out :"
         contactEmail="hello@zova.ai"
         contactEmailHref="mailto:hello@zova.ai"
-        description="ZOVA turns raw blockchain data into structured context that AI agents can reason over. REST API, webhooks, SDK — production-ready from day one."
-        brandName="ZOVA"
-        copyright="© 2026 ZOVA Inc. Intelligence Infrastructure · Blockchain × AI"
+        description={<><ZovaWordmark height={12} className="inline-block align-[-0.1em] mr-1" /> turns raw blockchain data into structured context that AI agents can reason over. REST API, webhooks, SDK — production-ready from day one.</>}
+        brandName={<ZovaWordmark height={12} className="text-white/70" />}
+        copyright={<span className="inline-flex items-center gap-1.5">© 2026 <ZovaWordmark height={10} /> Inc. Intelligence Infrastructure · Blockchain × AI</span>}
         linkColumns={[
           {
             title: "Product",

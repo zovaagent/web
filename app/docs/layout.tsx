@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { DocsSidebar } from "@/components/docs/docs-sidebar";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { ZovaLogo } from "@/components/landing/zova-logo";
+import { ZovaWordmark } from "@/components/landing/zova-wordmark";
 
 export default function DocsLayout({
   children,
@@ -11,14 +13,15 @@ export default function DocsLayout({
   return (
     <div className="min-h-screen bg-[#05050a]">
       {/* Docs top bar */}
-      <header className="fixed top-0 inset-x-0 z-50 h-14 border-b border-white/6 bg-[#05050a]/90 backdrop-blur-xl flex items-center">
+      <header className="fixed top-0 inset-x-0 z-50 h-14 border-b border-white/6 bg-[#05050a] flex items-center">
         <div className="flex items-center gap-4 px-4 w-full max-w-none">
           <Link
             href="/"
-            className="flex items-center gap-1.5 text-white/40 hover:text-white/70 transition-colors text-sm shrink-0"
+            className="flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors text-sm shrink-0"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
-            ZOVA
+            <ZovaLogo size={24} idPrefix="docs-header" />
+            <ZovaWordmark height={16} className="text-white" />
           </Link>
           <div className="h-4 w-px bg-white/10" />
           <span className="text-white/50 text-sm">Documentation</span>

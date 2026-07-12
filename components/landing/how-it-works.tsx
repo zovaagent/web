@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { SectionLabel } from "./section-label";
+import { ZovaText } from "./zova-wordmark";
 
 const steps = [
   {
@@ -58,7 +59,7 @@ export function HowItWorks() {
                 {step.number}
               </span>
               <h3 className="text-lg font-semibold text-zinc-900">{step.title}</h3>
-              <p className="text-sm leading-relaxed text-zinc-500">{step.description}</p>
+              <p className="text-sm leading-relaxed text-zinc-500"><ZovaText height={11} className="inline-block align-[-0.1em] mx-1 text-zinc-500">{step.description}</ZovaText></p>
             </motion.div>
           ))}
         </div>

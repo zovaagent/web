@@ -1,5 +1,9 @@
 import { StaticDocsToc } from "@/components/docs/docs-toc";
-import { TracingBeam } from "@/components/ui/aceternity/tracing-beam";
+import { ZovaWordmark, ZovaText } from "@/components/landing/zova-wordmark";
+
+const Z = () => (
+  <ZovaWordmark height={14} className="inline-block align-[-0.15em] mx-1" />
+);
 
 /* Static doc content map — replace with MDX loader when content files are ready */
 const docContent: Record<
@@ -37,12 +41,10 @@ export default async function DocPage({ params }: PageProps) {
     <div className="flex gap-0 min-h-full">
       {/* Main content */}
       <div className="flex-1 min-w-0 px-6 sm:px-10 lg:px-16 py-12">
-        <TracingBeam>
-          <article className="prose-zova max-w-3xl">
-            <h1 id="title">{doc.title}</h1>
-            {doc.body}
-          </article>
-        </TracingBeam>
+        <article className="prose-zova max-w-3xl">
+          <h1 id="title"><ZovaText height={28} className="inline-block align-[-0.15em] mx-1">{doc.title}</ZovaText></h1>
+          {doc.body}
+        </article>
       </div>
 
       {/* Right TOC */}
@@ -75,13 +77,13 @@ function introductionContent() {
     ],
     body: (
       <>
-        <h2 id="what-is-zova">What is ZOVA?</h2>
+        <h2 id="what-is-zova">What is <Z />?</h2>
         <p>
-          ZOVA is an AI infrastructure platform that enables autonomous systems to better
+          <Z /> is an AI infrastructure platform that enables autonomous systems to better
           understand blockchain activity through structured intelligence.
         </p>
         <p>
-          Instead of exposing raw on-chain data, ZOVA transforms blockchain events into
+          Instead of exposing raw on-chain data, <Z /> transforms blockchain events into
           contextual information that is easier for AI agents, developers, and decentralized
           applications to interpret.
         </p>
@@ -92,9 +94,9 @@ function introductionContent() {
 
         <h2 id="platform-overview">Platform Overview</h2>
         <p>
-          ZOVA functions as an intelligence layer positioned between blockchain infrastructure
+          <Z /> functions as an intelligence layer positioned between blockchain infrastructure
           and AI applications. Instead of requiring developers to process thousands of
-          blockchain events manually, ZOVA performs contextual analysis before exposing
+          blockchain events manually, <Z /> performs contextual analysis before exposing
           structured outputs.
         </p>
         <p>
@@ -102,7 +104,7 @@ function introductionContent() {
           decisions using enriched blockchain intelligence.
         </p>
 
-        <h2 id="how-zova-works">How ZOVA Works</h2>
+        <h2 id="how-zova-works">How <Z /> Works</h2>
         <p>
           The platform follows a structured intelligence pipeline: raw blockchain data flows
           through normalization, indexing, entity recognition, behavior analysis, context
@@ -184,13 +186,13 @@ function platformOverviewContent() {
       <>
         <h2 id="intelligence-layer">Intelligence Layer</h2>
         <p>
-          ZOVA functions as an intelligence layer positioned between blockchain infrastructure
+          <Z /> functions as an intelligence layer positioned between blockchain infrastructure
           and AI applications. It performs contextual analysis before exposing structured
           outputs to consuming systems.
         </p>
 
         <h2 id="core-components">Core Components</h2>
-        <p>The ZOVA platform includes four primary intelligence modules:</p>
+        <p>The <Z /> platform includes four primary intelligence modules:</p>
         <ul>
           <li><strong>Wallet Intelligence</strong> — behavioral analysis for blockchain addresses</li>
           <li><strong>Token Intelligence</strong> — digital asset lifecycle analysis</li>
@@ -213,7 +215,7 @@ function coreArchitectureContent() {
       <>
         <h2 id="architecture-overview">Architecture Overview</h2>
         <p>
-          ZOVA's architecture follows a layered design where each stage progressively
+          <Z />&apos;s architecture follows a layered design where each stage progressively
           enriches raw blockchain information into structured intelligence.
         </p>
 
@@ -283,7 +285,7 @@ function contextEngineContent() {
       <>
         <h2 id="overview">Overview</h2>
         <p>
-          The Context Processing Engine represents the core of ZOVA. Instead of exposing
+          The Context Processing Engine represents the core of <Z />. Instead of exposing
           blockchain events directly, the engine enriches each event with additional
           knowledge derived from historical activity, behavioral analysis, entity
           relationships, and network observations.
@@ -313,7 +315,7 @@ function walletIntelligenceContent() {
         <h2 id="overview">Overview</h2>
         <p>
           Wallet Intelligence provides behavioral analysis for blockchain addresses. Rather
-          than displaying transaction history alone, ZOVA identifies patterns such as wallet
+          than displaying transaction history alone, <Z /> identifies patterns such as wallet
           activity, interaction frequency, historical behavior, and contextual classifications.
         </p>
 
@@ -407,7 +409,7 @@ function riskSignalsContent() {
       <>
         <h2 id="overview">Overview</h2>
         <p>
-          Blockchain activity constantly changes. ZOVA continuously evaluates contextual
+          Blockchain activity constantly changes. <Z /> continuously evaluates contextual
           indicators that may suggest elevated operational risk. Risk Signals are intended to
           assist AI systems by highlighting unusual or potentially significant on-chain
           behavior.
@@ -437,7 +439,7 @@ function developerPlatformContent() {
       <>
         <h2 id="overview">Overview</h2>
         <p>
-          ZOVA is designed primarily for developers building autonomous applications. The
+          <Z /> is designed primarily for developers building autonomous applications. The
           platform will provide modern interfaces for integrating blockchain intelligence into
           software products.
         </p>
@@ -467,7 +469,7 @@ function dashboardContent() {
       <>
         <h2 id="overview">Overview</h2>
         <p>
-          The ZOVA Dashboard will serve as the primary interface for exploring blockchain
+          The <Z /> Dashboard will serve as the primary interface for exploring blockchain
           intelligence. It provides visual access to the intelligence layer for developers
           and analysts.
         </p>
@@ -496,11 +498,11 @@ function apiPhilosophyContent() {
       <>
         <h2 id="objective">Objective</h2>
         <p>
-          The purpose of the ZOVA API is not simply to expose blockchain data. Its objective
+          The purpose of the <Z /> API is not simply to expose blockchain data. Its objective
           is to expose <strong>understanding</strong>.
         </p>
         <p>
-          Rather than forcing developers to interpret thousands of blockchain events, ZOVA
+          Rather than forcing developers to interpret thousands of blockchain events, <Z />
           delivers structured intelligence that can be consumed immediately by AI systems.
         </p>
 
@@ -524,7 +526,7 @@ function designPrinciplesContent() {
     body: (
       <>
         <h2 id="principles">Core Principles</h2>
-        <p>The ZOVA platform follows several engineering principles:</p>
+        <p>The <Z /> platform follows several engineering principles:</p>
         <ul>
           <li><strong>Structured Intelligence</strong> — context should always be more valuable than raw data</li>
           <li><strong>Developer First</strong> — every platform component is designed to simplify integration</li>
@@ -560,7 +562,7 @@ function futurePlatformContent() {
         </ul>
 
         <h2 id="roadmap-phases">Roadmap Phases</h2>
-        <p>ZOVA is developed through five phases:</p>
+        <p><Z /> is developed through five phases:</p>
         <ul>
           <li><strong>Phase 01 — Foundation</strong>: Brand, website, whitepaper, documentation</li>
           <li><strong>Phase 02 — Intelligence Engine</strong>: Core intelligence capabilities</li>

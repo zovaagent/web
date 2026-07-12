@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { SectionLabel } from "./section-label";
+import { ZovaText } from "./zova-wordmark";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 const viewport = { once: true, margin: "-80px" } as const;
@@ -42,10 +43,10 @@ export function ProblemSolution() {
             >
               <SectionLabel number={item.number} label={item.label} />
               <h2 className="text-2xl font-semibold leading-snug text-zinc-900 lg:text-3xl max-w-sm">
-                {item.title}
+                <ZovaText height={18} className="inline-block align-[-0.1em] mx-1 text-zinc-900">{item.title}</ZovaText>
               </h2>
               <p className="text-sm leading-relaxed text-zinc-500 max-w-md">
-                {item.body}
+                <ZovaText height={11} className="inline-block align-[-0.1em] mx-1 text-zinc-500">{item.body}</ZovaText>
               </p>
             </motion.div>
           ))}

@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { cn } from '@/lib/utils'
 import { SectionLabel } from '@/components/landing/section-label'
+import { ZovaText } from '@/components/landing/zova-wordmark'
 
 interface FAQItem {
   id: string
@@ -76,7 +77,7 @@ export const FaqInteractivePreview = () => {
             Frequently asked questions
           </h2>
           <p className="max-w-md text-sm leading-relaxed text-zinc-500">
-            Everything you need to know about the ZOVA intelligence layer and how it powers autonomous AI on-chain.
+            Everything you need to know about the <ZovaText height={11} className="inline-block align-[-0.1em] mx-1 text-zinc-500">ZOVA</ZovaText> intelligence layer and how it powers autonomous AI on-chain.
           </p>
         </div>
 
@@ -96,7 +97,7 @@ export const FaqInteractivePreview = () => {
                 )}
               >
                 <span className="pr-6 text-sm font-medium leading-snug">
-                  {item.question}
+                  <ZovaText height={12} className="inline-block align-[-0.1em] mx-1">{item.question}</ZovaText>
                 </span>
                 <span
                   className={cn(
@@ -127,10 +128,10 @@ export const FaqInteractivePreview = () => {
                   {activeItem.category}
                 </span>
                 <h3 className="text-xl font-semibold leading-snug text-zinc-900 max-w-sm">
-                  {activeItem.question}
+                  <ZovaText height={16} className="inline-block align-[-0.1em] mx-1 text-zinc-900">{activeItem.question}</ZovaText>
                 </h3>
                 <p className="text-sm leading-relaxed text-zinc-500 max-w-md">
-                  {activeItem.answer}
+                  <ZovaText height={11} className="inline-block align-[-0.1em] mx-1 text-zinc-500">{activeItem.answer}</ZovaText>
                 </p>
               </motion.div>
             </AnimatePresence>

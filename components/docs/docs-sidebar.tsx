@@ -1,12 +1,12 @@
 "use client";
+import * as React from "react";
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronRight, BookOpen } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
-  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -70,17 +70,20 @@ export function DocsSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar className="border-r border-white/6 bg-[#060610]">
-      <SidebarHeader className="p-4 border-b border-white/6">
-        <Link href="/docs" className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
-            <BookOpen className="h-3.5 w-3.5 text-purple-400" />
-          </div>
-          <span className="text-white/80 text-sm font-medium">Documentation</span>
-        </Link>
-      </SidebarHeader>
-
-      <SidebarContent className="px-2 py-4">
+    <Sidebar
+      className="border-r border-white/6 bg-[#060610]"
+      style={
+        {
+          "--sidebar": "#060610",
+          "--sidebar-foreground": "rgba(255,255,255,0.75)",
+          "--sidebar-accent": "rgba(255,255,255,0.05)",
+          "--sidebar-accent-foreground": "#ffffff",
+          "--sidebar-border": "rgba(255,255,255,0.06)",
+          "--sidebar-ring": "rgba(168,139,250,0.5)",
+        } as React.CSSProperties
+      }
+    >
+      <SidebarContent className="px-2 pt-16 pb-4">
         {docNavigation.map((section) =>
           section.collapsible ? (
             <CollapsibleSection

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { type Variants } from 'motion/react'
 import { TimelineAnimation } from '@/components/timeline-animation'
 import { Button } from '@/components/ui/button'
+import { ZovaWordmark } from '@/components/landing/zova-wordmark'
 import {
   NetworkSolana,
   NetworkSui,
@@ -96,7 +97,7 @@ export const HeroAiInfrastructure = () => {
           customVariants={fadeUp}
           className="text-zinc-500 text-base md:text-lg max-w-[480px] mb-10 font-light leading-relaxed"
         >
-          ZOVA transforms raw on-chain data into structured context, memory, and
+          <ZovaWordmark height={14} className="inline-block align-[-0.15em] mr-1 text-zinc-500" /> transforms raw on-chain data into structured context, memory, and
           understanding — purpose-built for autonomous AI systems.
         </TimelineAnimation>
 
@@ -113,7 +114,7 @@ export const HeroAiInfrastructure = () => {
             nativeButton={false}
             className="bg-zinc-900 text-white hover:bg-zinc-800 border-0 px-7 h-11 gap-2 font-semibold text-sm"
           >
-            Enter ZOVA
+            Enter <ZovaWordmark height={12} className="inline-block align-[-0.1em] ml-1 text-white" />
             <ArrowRight className="h-4 w-4" />
           </Button>
           <Button

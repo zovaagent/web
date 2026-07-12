@@ -3,6 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
+import { ZovaWordmark } from "@/components/landing/zova-wordmark";
 import { FaArrowRight, FaXTwitter, FaTelegram } from "react-icons/fa6";
 import type { IconType } from "react-icons";
 import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
@@ -31,35 +32,45 @@ const defaultSocials: Footer10Social[] = [
 export interface Footer10Props {
   bannerTagline?: string;
   bannerHeading?: string;
-  bannerCtaLabel?: string;
+  bannerCtaLabel?: React.ReactNode;
   bannerCtaHref?: string;
   contactLabel?: string;
   contactEmail?: string;
   contactEmailHref?: string;
-  description?: string;
+  description?: React.ReactNode;
   newsletterPlaceholder?: string;
   onSubscribe?: (email: string) => void;
   linkColumns?: Footer10LinkColumn[];
   socials?: Footer10Social[];
-  brandName?: string;
-  copyright?: string;
+  brandName?: React.ReactNode;
+  copyright?: React.ReactNode;
 }
 
 export function Footer10({
   bannerTagline = "Trusted by Builders",
   bannerHeading = "Interested in working together, trying out the platform or simply learning more?",
-  bannerCtaLabel = "Enter ZOVA",
+  bannerCtaLabel = (
+    <>
+      Enter <ZovaWordmark height={12} className="inline-block align-[-0.1em] ml-1" />
+    </>
+  ),
   bannerCtaHref = "#",
   contactLabel = "Reach out :",
   contactEmail = "hello@zova.ai",
   contactEmailHref = "mailto:hello@zova.ai",
-  description = "Intelligence infrastructure for autonomous AI systems. REST API, webhooks, SDK — production-ready from day one.",
+  description = (
+    <>Intelligence infrastructure for autonomous AI systems. REST API, webhooks, SDK — production-ready from day one.</>
+  ),
   newsletterPlaceholder = "Email address",
   onSubscribe,
   linkColumns = [],
   socials = defaultSocials,
-  brandName = "ZOVA",
-  copyright = "© 2026 ZOVA Inc. All rights reserved.",
+  brandName = <ZovaWordmark height={12} className="text-white/70" />,
+  copyright = (
+    <span className="inline-flex items-center gap-1.5">
+      © 2026 <ZovaWordmark height={10} /> Inc. All rights reserved.
+    </span>
+  ),
 }: Footer10Props) {
   const [email, setEmail] = React.useState("");
 
@@ -243,7 +254,7 @@ export function Footer10({
 
         {/* Bottom bar */}
         <div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-6 text-[11px] font-medium uppercase tracking-[0.16em] text-white/60 sm:flex-row sm:items-center sm:justify-between">
-          <span className="font-azonix normal-case tracking-[0.08em]">{brandName}</span>
+          <span>{brandName}</span>
           <span>{copyright}</span>
         </div>
       </div>
