@@ -18,42 +18,49 @@ const FAQ_DATA: FAQItem[] = [
     category: 'General',
     question: 'What is ZOVA?',
     answer:
-      'ZOVA is an intelligence infrastructure platform that transforms raw blockchain data into structured context for autonomous AI systems. We provide enriched, explainable data layers so AI agents can reason and act with confidence on on-chain information.',
+      'ZOVA is an AI-native intelligence infrastructure that transforms fragmented blockchain activity into structured, contextual intelligence for autonomous systems. Rather than another analytics platform, we operate beneath applications — providing intelligence as foundational infrastructure.',
   },
   {
     id: 'g2',
     category: 'General',
-    question: 'Which blockchains does ZOVA support?',
+    question: 'How is ZOVA different from a blockchain explorer?',
     answer:
-      'ZOVA currently supports Solana, Ethereum, Base, Arbitrum, Sui, and Abstract — with more networks being added continuously. Our architecture is chain-agnostic by design, enabling rapid expansion to new ecosystems.',
+      'Explorers and dashboards provide visibility for humans. ZOVA provides understanding for machines. Instead of visualizing information, we organize knowledge into structured representations that autonomous AI can immediately reason about — without building custom processing pipelines.',
+  },
+  {
+    id: 'g3',
+    category: 'General',
+    question: 'Why is context the missing layer?',
+    answer:
+      'Blockchain data is optimized for verification, not understanding. Machines can observe activity without understanding its significance. Two wallets executing identical transactions may represent completely different intentions — context is what transforms identical data into different knowledge.',
   },
   {
     id: 't1',
     category: 'Technical',
     question: 'How does ZOVA integrate with AI agents?',
     answer:
-      'ZOVA exposes a REST API and webhooks that any agent framework can consume. We return structured JSON responses optimized for LLM context windows, making it straightforward to give your agent real-time blockchain awareness with a single call.',
+      'ZOVA will expose a REST API, SDK, and webhooks that any agent framework can consume. Structured JSON responses are designed for immediate consumption by autonomous systems — enabling AI to reason about on-chain behavior with a single call.',
   },
   {
     id: 't2',
     category: 'Technical',
-    question: 'What does Wallet Intelligence return?',
+    question: 'What are the four core intelligence modules?',
     answer:
-      'Wallet Intelligence returns behavioral scores, activity timelines, entity classifications, counterparty graphs, asset exposure breakdowns, and risk signals — all structured and enriched for immediate machine consumption.',
+      'Wallet Intelligence provides behavioral analysis for addresses. Token Intelligence analyzes the full lifecycle of digital assets. Contract Intelligence extracts structured metadata from smart contracts. Risk Signals continuously evaluate contextual indicators for elevated operational risk.',
   },
   {
     id: 't3',
     category: 'Technical',
-    question: 'How fast is the API?',
+    question: 'What does the Intelligence Pipeline do?',
     answer:
-      'Our API delivers sub-100ms response times at P99 for most intelligence queries. Real-time event streaming via webhooks delivers sub-second latency across all supported networks.',
+      'Raw blockchain data flows through normalization, indexing, entity recognition, behavior analysis, context enrichment, and risk evaluation. Each stage increases the informational value before structured intelligence is delivered to AI applications.',
   },
   {
-    id: 'p1',
-    category: 'Pricing',
-    question: 'Is there a free tier?',
+    id: 'r1',
+    category: 'Roadmap',
+    question: 'What phase is ZOVA in?',
     answer:
-      'Yes. ZOVA offers a generous free tier for developers and researchers. You get full access to all four intelligence modules with rate limits suitable for prototyping and integration testing — no credit card required.',
+      'ZOVA is in Phase 01 — Foundation. This phase establishes brand identity, whitepaper, documentation, community, and initial product architecture. Phase 02 (Intelligence Engine) introduces the first generation of contextual intelligence capabilities across Wallet, Token, and Contract Intelligence.',
   },
 ]
 
@@ -69,7 +76,7 @@ export const FaqInteractivePreview = () => {
             Frequently asked questions
           </h2>
           <p className="max-w-md text-sm leading-relaxed text-zinc-500">
-            Everything you need to know about integrating ZOVA into your AI infrastructure.
+            Everything you need to know about the ZOVA intelligence layer and how it powers autonomous AI on-chain.
           </p>
         </div>
 

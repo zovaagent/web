@@ -6,21 +6,21 @@ import { SectionLabel } from "./section-label";
 const steps = [
   {
     number: "01",
-    title: "Raw On-Chain Data",
+    title: "Data Collection & Indexing",
     description:
-      "Real-time data collected from multiple blockchain networks — transactions, events, state changes, and more.",
+      "Raw blockchain events are collected across networks, then normalized and indexed into a unified structure — the foundation for every intelligence layer above it.",
   },
   {
     number: "02",
-    title: "Context Engine",
+    title: "Context Processing Engine",
     description:
-      "Processing, enriching, and connecting raw data into structured, explainable context with behavioral signals.",
+      "Entity recognition, behavioral analysis, and context enrichment transform blockchain events into meaningful knowledge — the core of ZOVA's intelligence layer.",
   },
   {
     number: "03",
-    title: "Agent Intelligence",
+    title: "Structured Intelligence",
     description:
-      "Structured intelligence delivered via API for AI agents to reason, decide, and act with full confidence.",
+      "Enriched context and risk-evaluated signals are delivered via REST API, SDK, and webhooks — immediately consumable by autonomous AI applications.",
   },
 ];
 
@@ -34,8 +34,8 @@ export function HowItWorks() {
             From raw data to structured intelligence
           </h2>
           <p className="max-w-md text-sm leading-relaxed text-zinc-500">
-            Three stages transform raw blockchain events into contextual
-            intelligence that autonomous systems can immediately understand.
+            Each stage of the intelligence pipeline increases the informational value
+            available to autonomous systems — transforming events into understanding.
           </p>
         </div>
 
@@ -65,6 +65,8 @@ export function HowItWorks() {
 
         <div className="mt-10 flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-300">
           <span className="shrink-0">Blockchain Networks</span>
+          <span className="flex-1 h-px bg-zinc-200" />
+          <span className="shrink-0">Intelligence Layer</span>
           <span className="flex-1 h-px bg-zinc-200" />
           <span className="shrink-0">AI Applications</span>
         </div>

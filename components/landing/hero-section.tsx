@@ -94,7 +94,7 @@ export function HeroSection() {
           className="inline-flex items-center gap-2.5 border border-white/10 px-4 py-2 text-[10px] font-semibold tracking-[0.22em] uppercase text-white/40 mb-10"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#6d4dff] animate-pulse" />
-          Intelligence Layer &middot; Blockchain x AI
+          Zone of Virtual Economy &middot; Blockchain x AI
         </TimelineAnimation>
 
         {/* Headline */}
@@ -105,11 +105,9 @@ export function HeroSection() {
           customVariants={fadeUp}
           className="text-[clamp(2.8rem,8vw,5.75rem)] font-semibold tracking-[-0.04em] leading-[1.02] max-w-4xl mb-6 text-white"
         >
-          Context-native
+          Zone of Virtual
           <br />
-          infrastructure
-          <br />
-          <span className="text-white/35">for autonomous AI.</span>
+          <span className="text-white/35">Economy.</span>
         </TimelineAnimation>
 
         {/* Subtitle */}
@@ -118,10 +116,10 @@ export function HeroSection() {
           as="p"
           animationNum={3}
           customVariants={fadeUp}
-          className="text-white/50 text-base md:text-lg max-w-[500px] mb-12 font-light leading-relaxed"
+          className="text-white/50 text-base md:text-lg max-w-[540px] mb-12 font-light leading-relaxed"
         >
-          ZOVA transforms raw on-chain activity into structured context, memory,
-          and explainable signals so AI systems can reason with confidence in production.
+          The platform where intelligent systems understand, reason, and act
+          across decentralized environments.
         </TimelineAnimation>
 
         {/* CTAs */}

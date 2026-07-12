@@ -10,14 +10,14 @@ const items = [
   {
     number: "01",
     label: "The Problem",
-    title: "AI agents see everything, but understand little.",
-    body: "Blockchains generate massive amounts of raw data, but context is fragmented, complex, and difficult to interpret. A transaction alone does not explain why it occurred, who initiated it, or whether it represents normal behavior.",
+    title: "A blockchain records events. It does not explain them.",
+    body: "Every transaction is public, every wallet observable, every contract accessible — yet transparency alone does not produce understanding. Machines can see. They cannot necessarily understand why an action occurred, who initiated it, or whether it represents normal behavior.",
   },
   {
     number: "02",
     label: "The Solution",
-    title: "ZOVA turns raw on-chain activity into structured intelligence.",
-    body: "We provide the context layer that enables autonomous AI systems to reason, decide, and act with confidence. Every blockchain event becomes enriched, explainable intelligence.",
+    title: "Context is the missing layer. ZOVA is building it.",
+    body: "Rather than another analytics platform, ZOVA is intelligence infrastructure. We transform fragmented on-chain activity into structured, contextual intelligence — enabling autonomous AI to reason with confidence rather than merely observe.",
   },
 ];
 

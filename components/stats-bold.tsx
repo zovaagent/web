@@ -33,9 +33,13 @@ export const BoldStats = () => {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 flex flex-col gap-4">
           <SectionLabel number="05" label="Scale & Performance" dark />
-          <h2 className="text-3xl font-semibold tracking-tight text-white max-w-md leading-tight">
-            Built to handle production scale from day one.
+          <h2 className="text-3xl font-semibold tracking-tight text-white max-w-lg leading-tight">
+            Infrastructure engineered for autonomous systems at production scale.
           </h2>
+          <p className="text-sm text-white/40 max-w-md leading-relaxed">
+            Intelligence should be reliable, verifiable, and always available —
+            so autonomous agents can reason without waiting on data pipelines.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 border-t border-white/[0.07] sm:grid-cols-2 lg:grid-cols-4">

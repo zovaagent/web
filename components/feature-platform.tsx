@@ -8,29 +8,29 @@ const features = [
     index: '01',
     title: 'Wallet Intelligence',
     description:
-      'Behavioral analysis, entity classification, and historical pattern recognition for any blockchain address or wallet cluster.',
-    tags: ['Behavioral scoring', 'Entity graph', 'Risk signals'],
+      'Behavioral analysis for blockchain addresses — patterns, interaction frequency, historical behavior, and contextual classifications rather than raw transaction history.',
+    tags: ['Behavioral scoring', 'Activity timeline', 'Entity relationships'],
   },
   {
     index: '02',
     title: 'Token Intelligence',
     description:
-      'Analyze token activity, holder behavior, liquidity dynamics, and distribution patterns. Reason about assets beyond price.',
-    tags: ['Holder analysis', 'Liquidity map', 'Supply context'],
+      'Analyze the full lifecycle of digital assets beyond market data — enabling AI systems to reason about assets, not just observe price movements.',
+    tags: ['Holder behavior', 'Liquidity characteristics', 'Distribution patterns'],
   },
   {
     index: '03',
-    title: 'Contract Context',
+    title: 'Contract Intelligence',
     description:
-      'Decode smart contracts, extract interaction graphs, map permissions, and surface operational logic for machine consumption.',
-    tags: ['ABI decoding', 'Permission map', 'Interaction graph'],
+      'Extract structured metadata and contextual characteristics from smart contracts to simplify machine understanding of operational logic.',
+    tags: ['Deployment info', 'Permission models', 'Execution history'],
   },
   {
     index: '04',
     title: 'Risk Signals',
     description:
-      'Real-time anomaly detection, suspicious pattern identification, and context-aware risk evaluation for autonomous systems.',
-    tags: ['Anomaly detection', 'Pattern flags', 'Risk score'],
+      'Continuously evaluate contextual indicators that may suggest elevated operational risk — anomalies, suspicious behavior, and unusual on-chain patterns.',
+    tags: ['Abnormal patterns', 'Suspicious behavior', 'Liquidity anomalies'],
   },
 ]
 
@@ -48,12 +48,12 @@ export const FeaturePlatform = () => {
     <section className="px-6 py-24 bg-white">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-3 mb-16">
-          <SectionLabel number="03" label="Intelligence Modules" />
+          <SectionLabel number="03" label="Core Intelligence Modules" />
           <h2 className="text-3xl font-semibold tracking-tight text-zinc-950 max-w-lg leading-tight">
-            Four structured layers of on-chain intelligence
+            Four contextual layers of on-chain intelligence
           </h2>
           <p className="text-zinc-400 text-sm max-w-md leading-relaxed mt-1">
-            Each module delivers enriched, structured context that autonomous AI can immediately reason over and act on.
+            Instead of delivering isolated blockchain events, each module produces structured, machine-readable understanding.
           </p>
         </div>
 
