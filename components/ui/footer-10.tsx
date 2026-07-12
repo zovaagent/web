@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { FaArrowRight, FaXTwitter, FaTelegram } from "react-icons/fa6";
 import type { IconType } from "react-icons";
@@ -23,7 +24,7 @@ export interface Footer10Social {
 }
 
 const defaultSocials: Footer10Social[] = [
-  { label: "X", href: "#", Icon: FaXTwitter },
+  { label: "X", href: "https://x.com/zovaagent", Icon: FaXTwitter },
   { label: "Telegram", href: "#", Icon: FaTelegram },
 ];
 
@@ -179,14 +180,14 @@ export function Footer10({
             {socials.length > 0 && (
               <div className="flex items-center gap-2">
                 {socials.map(({ label, href, Icon }) => (
-                  <a
+                  <Link
                     key={label}
                     href={href}
                     aria-label={label}
                     className="inline-flex size-9 items-center justify-center rounded-none border border-white/10 text-white/60 transition-colors hover:border-white/25 hover:bg-white/5 hover:text-white"
                   >
                     <Icon className="h-4 w-4" />
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}
@@ -242,7 +243,7 @@ export function Footer10({
 
         {/* Bottom bar */}
         <div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-6 text-[11px] font-medium uppercase tracking-[0.16em] text-white/60 sm:flex-row sm:items-center sm:justify-between">
-          <span>{brandName}</span>
+          <span className="font-azonix normal-case tracking-[0.08em]">{brandName}</span>
           <span>{copyright}</span>
         </div>
       </div>

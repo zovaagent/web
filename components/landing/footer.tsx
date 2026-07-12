@@ -40,13 +40,13 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
             <div className="flex items-center gap-2.5">
               <ZovaLogo size={22} idPrefix="footer" />
-              <span className="text-white font-semibold text-base">ZOVA</span>
+              <span className="text-white font-azonix text-base">ZOVA</span>
             </div>
             <p className="text-white/35 text-sm leading-relaxed">
               Intelligence infrastructure for autonomous AI systems.
             </p>
             <div className="flex items-center gap-3 mt-2">
-              <Link href="#" aria-label="Twitter / X" className="text-white/30 hover:text-white/70 transition-colors">
+              <Link href="https://x.com/zovaagent" aria-label="Twitter / X" className="text-white/30 hover:text-white/70 transition-colors">
                 <XIcon />
               </Link>
               <Link href="#" aria-label="Discord" className="text-white/30 hover:text-white/70 transition-colors">
@@ -80,7 +80,7 @@ export function Footer() {
         <Separator className="my-10 bg-white/5" />
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/25">
-          <p>© 2025 ZOVA. Building the intelligence infrastructure for autonomous AI.</p>
+          <p>© 2025 <span className="font-azonix">ZOVA</span>. Building the intelligence infrastructure for autonomous AI.</p>
           <div className="flex items-center gap-6">
             <Link href="#" className="hover:text-white/50 transition-colors">Privacy</Link>
             <Link href="#" className="hover:text-white/50 transition-colors">Terms</Link>

@@ -20,7 +20,7 @@ const utilityLinks = [
 ];
 
 const socials = [
-  { label: "X", href: "#", Icon: FaXTwitter },
+  { label: "X", href: "https://x.com/zovaagent", Icon: FaXTwitter },
   { label: "Telegram", href: "#", Icon: FaTelegram },
 ];
 
@@ -35,7 +35,7 @@ export function Navbar() {
         <div className="flex items-center gap-6">
           <Link href="/" className="flex shrink-0 items-center gap-2.5">
             <ZovaLogo idPrefix="nav-main" />
-            <span className="text-base font-semibold tracking-tight text-white">ZOVA</span>
+            <span className="font-azonix text-base tracking-tight text-white">ZOVA</span>
           </Link>
 
           <span aria-hidden="true" className="hidden text-white/20 lg:inline">/</span>
@@ -97,7 +97,7 @@ export function Navbar() {
               <div className="flex items-center justify-between border-b border-white/10 p-4">
                 <div className="flex items-center gap-2">
                   <ZovaLogo idPrefix="nav-mobile" />
-                  <span className="text-base font-semibold text-white">ZOVA</span>
+                  <span className="font-azonix text-base text-white">ZOVA</span>
                 </div>
                 <button
                   onClick={() => setOpen(false)}

@@ -2,6 +2,19 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+@font-face {
+  font-family: "Azonix";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.cdnfonts.com/s/29750/Azonix.woff") format("woff");
+}
+
+.font-azonix {
+  font-family: "Azonix", sans-serif;
+  letter-spacing: 0.05em;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
