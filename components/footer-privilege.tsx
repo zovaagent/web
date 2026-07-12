@@ -55,7 +55,6 @@ export const FooterPrivilege = () => {
         <div className="flex items-center gap-8">
           <Link href="#" className="transition-colors hover:text-zinc-600">Privacy</Link>
           <Link href="#" className="transition-colors hover:text-zinc-600">Terms</Link>
-          <Link href="#" className="transition-colors hover:text-zinc-600">GitHub</Link>
         </div>
       </div>
     </footer>

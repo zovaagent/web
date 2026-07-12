@@ -48,7 +48,6 @@ export default function HomePage() {
               { label: "Documentation", href: "/docs" },
               { label: "API Reference", href: "/docs/api-reference" },
               { label: "SDK Guide", href: "/docs/sdk" },
-              { label: "GitHub", href: "#" },
             ],
           },
           {

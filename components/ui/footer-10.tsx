@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Input } from "@/components/ui/input";
-import { FaArrowRight, FaGithub, FaXTwitter, FaTelegram } from "react-icons/fa6";
+import { FaArrowRight, FaXTwitter, FaTelegram } from "react-icons/fa6";
 import type { IconType } from "react-icons";
 import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
 
@@ -23,7 +23,6 @@ export interface Footer10Social {
 }
 
 const defaultSocials: Footer10Social[] = [
-  { label: "GitHub", href: "#", Icon: FaGithub },
   { label: "X", href: "#", Icon: FaXTwitter },
   { label: "Telegram", href: "#", Icon: FaTelegram },
 ];

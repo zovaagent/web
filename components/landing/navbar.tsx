@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { FaGithub, FaXTwitter, FaTelegram } from "react-icons/fa6";
+import { FaXTwitter, FaTelegram } from "react-icons/fa6";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ZovaLogo } from "./zova-logo";
 
@@ -20,7 +20,6 @@ const utilityLinks = [
 ];
 
 const socials = [
-  { label: "GitHub", href: "#", Icon: FaGithub },
   { label: "X", href: "#", Icon: FaXTwitter },
   { label: "Telegram", href: "#", Icon: FaTelegram },
 ];
