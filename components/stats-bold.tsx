@@ -6,39 +6,38 @@ import { CountUp } from '@/components/count-up'
 
 const stats = [
   {
-    value: '50M+',
-    label: 'Events indexed daily',
-    desc: 'Real-time ingestion across multiple networks with sub-second processing latency.',
+    value: '110+',
+    label: 'Animation clips',
+    desc: 'Walk, dance, gesture, react — looped and blended, driven by AI response.',
   },
   {
-    value: '<100ms',
-    label: 'API response time',
-    desc: 'Sub-100ms at P99 for all intelligence queries across the platform.',
+    value: '1',
+    label: 'Line to embed',
+    desc: '<agent-3d> web component. Drop it anywhere. Works in any framework or plain HTML.',
   },
   {
-    value: '99.9%',
-    label: 'Uptime SLA',
-    desc: 'Enterprise-grade reliability with redundant infrastructure across regions.',
+    value: '0%',
+    label: 'Platform fee',
+    desc: 'Keep 100% of your pay-per-call earnings during open beta. No rev-share, no cut.',
   },
   {
-    value: '10+',
-    label: 'Supported networks',
-    desc: 'From Solana to Ethereum — expanding continuously to new ecosystems.',
+    value: '<10ms',
+    label: 'Embed load',
+    desc: 'Lazy-loaded, CDN-hosted, isolated CSS. Fastest path from tag to talking agent.',
   },
 ]
 
 export const BoldStats = () => {
   return (
-    <section className="bg-[#07070f] py-28">
+    <section className="bg-[#07070f] py-28 border-t border-white/[0.06]">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 flex flex-col gap-4">
-          <SectionLabel number="05" label="Scale & Performance" dark />
+          <SectionLabel number="04" label="Capabilities" dark />
           <h2 className="text-3xl font-semibold tracking-tight text-white max-w-lg leading-tight">
-            Infrastructure engineered for autonomous systems at production scale.
+            Every feature your agent needs.
           </h2>
           <p className="text-sm text-white/40 max-w-md leading-relaxed">
-            Intelligence should be reliable, verifiable, and always available —
-            so autonomous agents can reason without waiting on data pipelines.
+            Real numbers. Shipping today. No vaporware — each metric reflects a live system.
           </p>
         </div>
 

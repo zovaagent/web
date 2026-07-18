@@ -4,134 +4,142 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { cn } from '@/lib/utils'
 import { SectionLabel } from '@/components/landing/section-label'
-import { ZovaText } from '@/components/landing/zova-wordmark'
 
-interface FAQItem {
+interface StackPiece {
   id: string
-  question: string
-  answer: string
-  category: string
+  number: string
+  name: string
+  tagline: string
+  description: string
 }
 
-const FAQ_DATA: FAQItem[] = [
+const STACK: StackPiece[] = [
   {
-    id: 'g1',
-    category: 'General',
-    question: 'What is ZOVA?',
-    answer:
-      'ZOVA is an AI-native intelligence infrastructure that transforms fragmented blockchain activity into structured, contextual intelligence for autonomous systems. Rather than another analytics platform, we operate beneath applications — providing intelligence as foundational infrastructure.',
+    id: 's1',
+    number: '01',
+    name: 'Studio',
+    tagline: 'Selfie to agent in seconds.',
+    description:
+      'Browser-native, GPU-accelerated avatar creation — no software to install. Type a prompt or snap a selfie and get a rigged, animated 3D character ready to talk.',
   },
   {
-    id: 'g2',
-    category: 'General',
-    question: 'How is ZOVA different from a blockchain explorer?',
-    answer:
-      'Explorers and dashboards provide visibility for humans. ZOVA provides understanding for machines. Instead of visualizing information, we organize knowledge into structured representations that autonomous AI can immediately reason about — without building custom processing pipelines.',
+    id: 's2',
+    number: '02',
+    name: 'Registry',
+    tagline: 'Optional blockchain identity.',
+    description:
+      'Agents discoverable, portable, and attestable across any A2A or MCP client. Record ownership on-chain or keep it off-chain — your choice. SNS subdomain (.threews.sol) included.',
   },
   {
-    id: 'g3',
-    category: 'General',
-    question: 'Why is context the missing layer?',
-    answer:
-      'Blockchain data is optimized for verification, not understanding. Machines can observe activity without understanding its significance. Two wallets executing identical transactions may represent completely different intentions — context is what transforms identical data into different knowledge.',
+    id: 's3',
+    number: '03',
+    name: 'Embed',
+    tagline: 'One tag. Any host.',
+    description:
+      '<agent-3d> web component. Works in React, Vue, Svelte, and plain HTML. Lazy-loaded, isolated CSS, CDN-hosted globally. Voice, memory, and payments are built-in — zero config needed.',
   },
   {
-    id: 't1',
-    category: 'Technical',
-    question: 'How does ZOVA integrate with AI agents?',
-    answer:
-      'ZOVA will expose a REST API, SDK, and webhooks that any agent framework can consume. Structured JSON responses are designed for immediate consumption by autonomous systems — enabling AI to reason about on-chain behavior with a single call.',
+    id: 's4',
+    number: '04',
+    name: 'Pay-per-call',
+    tagline: 'HTTP-native USDC micropayments.',
+    description:
+      'Bill per skill, message, or session using the x402 protocol. 0% platform fee during open beta. Earnings flow to your wallet in real time — watch them move on your dashboard.',
   },
   {
-    id: 't2',
-    category: 'Technical',
-    question: 'What are the four core intelligence modules?',
-    answer:
-      'Wallet Intelligence provides behavioral analysis for addresses. Token Intelligence analyzes the full lifecycle of digital assets. Contract Intelligence extracts structured metadata from smart contracts. Risk Signals continuously evaluate contextual indicators for elevated operational risk.',
+    id: 's5',
+    number: '05',
+    name: 'Walk',
+    tagline: 'Multiplayer 3D worlds.',
+    description:
+      'CRDT-synced avatar positions, spatial voice, joystick control — in one embed tag. Drop a Walk world into any page and your visitors move through it as their own avatar alongside yours.',
   },
   {
-    id: 't3',
-    category: 'Technical',
-    question: 'What does the Intelligence Pipeline do?',
-    answer:
-      'Raw blockchain data flows through normalization, indexing, entity recognition, behavior analysis, context enrichment, and risk evaluation. Each stage increases the informational value before structured intelligence is delivered to AI applications.',
-  },
-  {
-    id: 'r1',
-    category: 'Roadmap',
-    question: 'What phase is ZOVA in?',
-    answer:
-      'ZOVA is in Phase 01 — Foundation. This phase establishes brand identity, whitepaper, documentation, community, and initial product architecture. Phase 02 (Intelligence Engine) introduces the first generation of contextual intelligence capabilities across Wallet, Token, and Contract Intelligence.',
+    id: 's6',
+    number: '06',
+    name: 'SDK',
+    tagline: 'JavaScript, Python, Rust.',
+    description:
+      'Mint, sign, attest, render, pay. Apache-2.0 licensed. Available on npm, PyPI, and crates.io. Full API reference in the Developer Hub. Bring your own LLM, voice, or data source.',
   },
 ]
 
 export const FaqInteractivePreview = () => {
-  const [activeItem, setActiveItem] = useState<FAQItem>(FAQ_DATA[0])
+  const [active, setActive] = useState<StackPiece>(STACK[0])
 
   return (
     <section className="w-full py-28 bg-white border-t border-zinc-100">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 flex flex-col gap-4">
-          <SectionLabel number="06" label="FAQ" />
+          <SectionLabel number="07" label="The stack" />
           <h2 className="max-w-lg text-3xl font-semibold leading-tight text-zinc-900 lg:text-4xl">
-            Frequently asked questions
+            Six pieces. One layer.
           </h2>
           <p className="max-w-md text-sm leading-relaxed text-zinc-500">
-            Everything you need to know about the <ZovaText height={11} className="inline-block align-[-0.1em] mx-1 text-zinc-500">ZOVA</ZovaText> intelligence layer and how it powers autonomous AI on-chain.
+            Every component is open, real, and shipping today. Use one. Use all. They compose.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-0 border-t border-zinc-100 lg:grid-cols-[1fr_1fr]">
-          {/* Question list — plain border rows */}
+          {/* Piece list */}
           <div className="border-b border-zinc-100 lg:border-b-0 lg:border-r lg:border-zinc-100 lg:pr-16">
-            {FAQ_DATA.map((item) => (
+            {STACK.map((piece) => (
               <motion.button
-                key={item.id}
-                onMouseEnter={() => setActiveItem(item)}
-                onClick={() => setActiveItem(item)}
+                key={piece.id}
+                onMouseEnter={() => setActive(piece)}
+                onClick={() => setActive(piece)}
                 className={cn(
                   'group flex w-full items-start justify-between border-b border-zinc-100 py-5 text-left transition-colors duration-150 last:border-b-0',
-                  activeItem.id === item.id
+                  active.id === piece.id
                     ? 'text-zinc-900'
                     : 'text-zinc-400 hover:text-zinc-700'
                 )}
               >
-                <span className="pr-6 text-sm font-medium leading-snug">
-                  <ZovaText height={12} className="inline-block align-[-0.1em] mx-1">{item.question}</ZovaText>
-                </span>
+                <div className="flex items-start gap-4 pr-6">
+                  <span className={cn(
+                    'mt-0.5 text-[10px] font-semibold tracking-[0.18em] shrink-0 transition-colors duration-150',
+                    active.id === piece.id ? 'text-[#6d4dff]' : 'text-zinc-300'
+                  )}>
+                    {piece.number}
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold leading-snug">{piece.name}</p>
+                    <p className="text-[11px] text-zinc-400 mt-0.5">{piece.tagline}</p>
+                  </div>
+                </div>
                 <span
                   className={cn(
                     'mt-0.5 shrink-0 text-[10px] font-semibold uppercase tracking-[0.16em] transition-colors duration-150',
-                    activeItem.id === item.id
-                      ? 'text-[var(--zova-purple)]'
+                    active.id === piece.id
+                      ? 'text-[#6d4dff]'
                       : 'text-zinc-300'
                   )}
                 >
-                  {item.category}
+                  {active.id === piece.id ? '→' : ''}
                 </span>
               </motion.button>
             ))}
           </div>
 
-          {/* Answer panel — plain, no card */}
+          {/* Detail panel */}
           <div className="lg:pl-16 py-8 lg:py-0">
             <AnimatePresence mode="wait">
               <motion.div
-                key={activeItem.id}
+                key={active.id}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.22, ease: [0.25, 0.1, 0.25, 1] }}
                 className="flex flex-col gap-5 pt-5"
               >
-                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--zova-purple)]">
-                  {activeItem.category}
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#6d4dff]">
+                  {active.number} · {active.name}
                 </span>
                 <h3 className="text-xl font-semibold leading-snug text-zinc-900 max-w-sm">
-                  <ZovaText height={16} className="inline-block align-[-0.1em] mx-1 text-zinc-900">{activeItem.question}</ZovaText>
+                  {active.tagline}
                 </h3>
                 <p className="text-sm leading-relaxed text-zinc-500 max-w-md">
-                  <ZovaText height={11} className="inline-block align-[-0.1em] mx-1 text-zinc-500">{activeItem.answer}</ZovaText>
+                  {active.description}
                 </p>
               </motion.div>
             </AnimatePresence>
