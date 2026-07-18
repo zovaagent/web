@@ -4,6 +4,9 @@ import { TrustBar } from "@/components/landing/trust-bar";
 import { ProblemSolution } from "@/components/landing/problem-solution";
 import { FeaturePlatform } from "@/components/feature-platform";
 import { TerminalWorkflow } from "@/components/landing/terminal-workflow";
+import { AutonomousTrading } from "@/components/landing/autonomous-trading";
+import { TokenEconomy } from "@/components/landing/token-economy";
+import { DeveloperPlatform } from "@/components/landing/developer-platform";
 import { BoldStats } from "@/components/stats-bold";
 import { HowItWorks } from "@/components/landing/how-it-works";
 import { FaqInteractivePreview } from "@/components/faq-interactive-preview";
@@ -17,10 +20,13 @@ export default function HomePage() {
       <main>
         <div id="home"><HeroSection /></div>
         <TrustBar />
-        <div id="platform"><ProblemSolution /></div>
+        <ProblemSolution />
         <div id="features"><FeaturePlatform /></div>
         <TerminalWorkflow />
+        <AutonomousTrading />
+        <TokenEconomy />
         <div id="capabilities"><BoldStats /></div>
+        <DeveloperPlatform />
         <div id="how"><HowItWorks /></div>
         <div id="stack"><FaqInteractivePreview /></div>
       </main>
@@ -49,9 +55,9 @@ export default function HomePage() {
             title: "Platform",
             links: [
               { label: "Embed",         href: "#embed"       },
-              { label: "Walk",          href: "#walk"        },
+              { label: "Trading",       href: "#trading"     },
+              { label: "Token Economy", href: "#token"       },
               { label: "Marketplace",   href: "#marketplace" },
-              { label: "Widgets",       href: "#widgets"     },
             ],
           },
           {
