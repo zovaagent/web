@@ -10,11 +10,11 @@ import { ZovaWordmark } from "@/components/landing/zova-wordmark";
 import { Announcement3 } from "@/components/ui/announcement-3";
 
 const navLinks = [
-  { label: "Forge",       href: "#forge"       },
-  { label: "Embed",       href: "#embed"       },
-  { label: "Workflow",    href: "#workflow"    },
-  { label: "Marketplace", href: "#marketplace" },
-  { label: "Docs",        href: "#docs"        },
+  { label: "Agents",       href: "#agent-ecosystem"             },
+  { label: "Marketplace",  href: "#agent-marketplace"           },
+  { label: "Build",        href: "#builders-section"            },
+  { label: "Architecture", href: "#agent-workflow"              },
+  { label: "Docs",         href: "#builders-section"            },
 ];
 
 const socials = [
@@ -30,9 +30,9 @@ export function Navbar() {
   return (
     <div className="fixed left-0 top-0 z-50 w-screen font-sans">
       <Announcement3
-        message="Text-to-3D is live · build a ZOVA agent in about a minute"
-        ctaLabel="Try Forge"
-        ctaHref="#forge"
+        message="Create · Deploy · Scale intelligent agents"
+        ctaLabel="Try Compiler"
+        ctaHref="#interactive-agent-generator"
       />
 
       <header className="border-b border-white/10 bg-[#05050a]">
@@ -69,10 +69,10 @@ export function Navbar() {
               ))}
             </div>
 
-            <Link href="#forge"
+            <Link href="#interactive-agent-generator"
               className={`${linkText} border border-transparent bg-[#6d4dff]/15 px-4 py-2 text-[#a78bfa] transition-colors hover:bg-[#6d4dff]/25 hover:text-white inline-flex items-center gap-1.5`}
             >
-              Build your agent
+              Create Agent
               <ChevronRight className="h-3.5 w-3.5" />
             </Link>
           </div>
@@ -102,10 +102,10 @@ export function Navbar() {
                   ))}
                 </nav>
                 <div className="border-t border-white/10 p-4">
-                  <Link href="#forge" onClick={() => setOpen(false)}
+                  <Link href="#interactive-agent-generator" onClick={() => setOpen(false)}
                     className={`${linkText} inline-flex w-full items-center justify-center gap-1.5 rounded-none bg-[#6d4dff]/15 px-4 py-2.5 text-center text-[#a78bfa] hover:bg-[#6d4dff]/25 hover:text-white`}
                   >
-                    Build your agent
+                    Create Agent
                     <ChevronRight className="h-3.5 w-3.5" />
                   </Link>
                   <div className="flex items-center justify-center gap-3 pt-4">

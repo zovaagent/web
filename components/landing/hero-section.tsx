@@ -41,9 +41,9 @@ export function HeroSection() {
       style={{ background: '#07070f' }}
     >
       {/* Shader gradient */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <ShaderGradientCanvas
-          style={{ width: '100%', height: '100%' }}
+          style={{ width: '100%', height: '100%', pointerEvents: 'none' }}
           pointerEvents="none"
           pixelDensity={1}
         >

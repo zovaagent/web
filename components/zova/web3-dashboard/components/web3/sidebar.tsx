@@ -18,21 +18,7 @@ import {
 } from "@/components/ui/sidebar";
 import { navSections, utilityItems } from "../../data";
 import { cn } from "@/lib/utils";
-
-function ThreeWsLogo({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-      <rect width="32" height="32" rx="7" fill="currentColor" fillOpacity="0.15" />
-      <path
-        d="M7 9.5h8.5M7 9.5l4.5 6M7 9.5l1.8 2.4M15.5 22.5H7M15.5 22.5l-4.5-6M25 9.5h-9.5M25 9.5l-4.5 6M25 9.5l-1.8 2.4M15.5 22.5H25M15.5 22.5l4.5-6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
+import { ZovaWordmark } from "@/components/landing/zova-wordmark";
 
 type NavItem = {
   label: string;
@@ -53,8 +39,7 @@ export function DashboardSidebar() {
               className="h-10 px-2 gap-2 group-data-[collapsible=icon]:hidden"
               render={<a href="/dashboard" />}
             >
-              <ThreeWsLogo className="size-7 text-foreground shrink-0" />
-              <span className="text-sm font-semibold tracking-tight">three.ws</span>
+              <ZovaWordmark height={14} className="text-foreground shrink-0" />
             </SidebarMenuButton>
             <SidebarTrigger className="shrink-0 ml-auto" />
           </SidebarMenuItem>

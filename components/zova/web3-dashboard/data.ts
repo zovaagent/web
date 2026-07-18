@@ -50,7 +50,7 @@ export const navSections = [
   {
     title: "MONETIZE",
     items: [
-      { label: "$THREE",    icon: Coins    },
+      { label: "$ZOVA",     icon: Coins    },
       { label: "Holders",   icon: Users    },
       { label: "Analytics", icon: BarChart3 },
     ],

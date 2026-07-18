@@ -1,10 +1,10 @@
-import { AssetTableCard }  from "@/components/watermelon/web3-dashboard/components/web3/asset-table-card";
-import { borrowedAssets, netWorthAssets } from "@/components/watermelon/web3-dashboard/data";
-import { DashboardTopbar }  from "@/components/watermelon/web3-dashboard/components/web3/topbar";
-import { MarketsPanel }     from "@/components/watermelon/web3-dashboard/components/web3/markets-panel";
-import { PortfolioPanel }   from "@/components/watermelon/web3-dashboard/components/web3/portfolio-panel";
-import { StatGrid }         from "@/components/watermelon/web3-dashboard/components/web3/stat-card";
-import { CardSplitAccordian } from "@/components/watermelon/card-split-accordian";
+import { AssetTableCard }  from "@/components/zova/web3-dashboard/components/web3/asset-table-card";
+import { borrowedAssets, netWorthAssets } from "@/components/zova/web3-dashboard/data";
+import { DashboardTopbar }  from "@/components/zova/web3-dashboard/components/web3/topbar";
+import { MarketsPanel }     from "@/components/zova/web3-dashboard/components/web3/markets-panel";
+import { PortfolioPanel }   from "@/components/zova/web3-dashboard/components/web3/portfolio-panel";
+import { StatGrid }         from "@/components/zova/web3-dashboard/components/web3/stat-card";
+import { CardSplitAccordian } from "@/components/zova/card-split-accordian";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 
