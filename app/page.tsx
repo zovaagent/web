@@ -4,8 +4,6 @@ import { TrustBar } from "@/components/landing/trust-bar";
 import { ProblemSolution } from "@/components/landing/problem-solution";
 import { FeaturePlatform } from "@/components/feature-platform";
 import { TerminalWorkflow } from "@/components/landing/terminal-workflow";
-import { AutonomousTrading } from "@/components/landing/autonomous-trading";
-import { TokenEconomy } from "@/components/landing/token-economy";
 import { DeveloperPlatform } from "@/components/landing/developer-platform";
 import { BoldStats } from "@/components/stats-bold";
 import { HowItWorks } from "@/components/landing/how-it-works";
@@ -23,8 +21,6 @@ export default function HomePage() {
         <ProblemSolution />
         <div id="features"><FeaturePlatform /></div>
         <TerminalWorkflow />
-        <AutonomousTrading />
-        <TokenEconomy />
         <div id="capabilities"><BoldStats /></div>
         <DeveloperPlatform />
         <div id="how"><HowItWorks /></div>
@@ -32,7 +28,7 @@ export default function HomePage() {
       </main>
       <Footer10
         bannerTagline="Open beta · Free to start"
-        bannerHeading="Your AI deserves a body. ZOVA handles the mesh, voice, memory, and payments."
+        bannerHeading="Your AI deserves a body. ZOVA handles the mesh, voice, and memory."
         bannerCtaLabel="Build your agent"
         bannerCtaHref="#forge"
         brandName={<ZovaWordmark height={12} className="text-white/70" />}
@@ -51,8 +47,6 @@ export default function HomePage() {
             title: "Platform",
             links: [
               { label: "Embed",         href: "#embed"       },
-              { label: "Trading",       href: "#trading"     },
-              { label: "Token Economy", href: "#token"       },
               { label: "Marketplace",   href: "#marketplace" },
             ],
           },

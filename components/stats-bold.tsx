@@ -16,11 +16,6 @@ const stats = [
     desc: '<agent-3d> web component. Drop it anywhere. Works in any framework or plain HTML.',
   },
   {
-    value: '0%',
-    label: 'Platform fee',
-    desc: 'Keep 100% of your pay-per-call earnings during open beta. No rev-share, no cut.',
-  },
-  {
     value: '<10ms',
     label: 'Embed load',
     desc: 'Lazy-loaded, CDN-hosted, isolated CSS. Fastest path from tag to talking agent.',

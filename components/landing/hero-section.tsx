@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import Link from 'next/link'
-import { ChevronRight, Terminal, Sparkles, Code2, Coins } from 'lucide-react'
+import { ChevronRight, Terminal, Sparkles, Code2 } from 'lucide-react'
 import { type Variants } from 'motion/react'
 import { TimelineAnimation } from '@/components/timeline-animation'
 import { Button } from '@/components/ui/button'
@@ -21,12 +21,10 @@ const fadeUp: Variants = {
 const bullets = [
   { Icon: Sparkles, cmd: 'zova create', desc: 'Prompt or selfie into a 3D agent in about a minute' },
   { Icon: Code2,    cmd: 'zova embed',  desc: 'Two lines of HTML. Any site. Any framework.'         },
-  { Icon: Coins,    cmd: 'zova earn',   desc: 'USDC per chat via x402 micropayments'                },
 ]
 
 const stats = [
   { value: '110+',  label: 'Animation clips' },
-  { value: '0%',    label: 'Platform fee'    },
   { value: '<10ms', label: 'Embed load'      },
 ]
 
@@ -80,7 +78,7 @@ export function HeroSection() {
           customVariants={fadeUp}
           className="text-white/50 text-base md:text-lg max-w-[560px] mb-10 font-light leading-relaxed"
         >
-          ZOVA gives your AI a body — mesh, voice, memory, and payments —
+          ZOVA gives your AI a body — mesh, voice, and memory —
           embeddable on any page in two lines of HTML.
         </TimelineAnimation>
 

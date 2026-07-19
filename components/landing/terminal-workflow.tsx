@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Check, ChevronRight, Sparkles, Code2, Coins, Circle } from "lucide-react";
+import { Check, ChevronRight, Sparkles, Code2, Circle } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
 import { SectionLabel } from "./section-label";
 
@@ -65,28 +65,6 @@ const steps: {
       { type: "result",  text: "live in <10ms after intersection"                },
     ],
   },
-  {
-    step: "03",
-    label: "EARN",
-    Icon: Coins,
-    title: "Charge per chat. Keep everything.",
-    desc: "Gate any skill behind pay-per-call USDC. Real-time settlement on Solana.",
-    file: "config/monetize.ts",
-    lines: [
-      { type: "comment", text: "# Enable x402 micropayments" },
-      { type: "cmd",     text: "zova monetize alex \\"                     },
-      { type: "cmd",     text: "  --protocol x402 \\"                      },
-      { type: "cmd",     text: "  --price 0.002 --token USDC \\"           },
-      { type: "cmd",     text: "  --wallet <your-solana-address>"          },
-      { type: "output",  text: ""                                          },
-      { type: "ok",      text: "x402 gateway attached"                     },
-      { type: "ok",      text: "402-payment challenge active"              },
-      { type: "info",    text: "price:    0.002 USDC / chat"               },
-      { type: "info",    text: "fee:      0% (open beta)"                  },
-      { type: "info",    text: "settled:  <2s on-chain finality"           },
-      { type: "result",  text: "dashboard: zova.ai/earn/alex"              },
-    ],
-  },
 ];
 
 const colorFor = (t: Line["type"]) => {
@@ -116,7 +94,7 @@ export function TerminalWorkflow() {
         <div className="mb-16 flex flex-col gap-4">
           <SectionLabel number="05" label="Workflow" dark />
           <h2 className="text-3xl font-semibold tracking-tight text-white max-w-xl leading-tight">
-            Three commands. One living agent.
+            Two commands. One living agent.
           </h2>
           <p className="text-sm text-white/40 max-w-md leading-relaxed">
             The full lifecycle in real syntax. Copy, paste, ship.

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Sparkles, Code2, Coins, ChevronRight } from "lucide-react";
+import { Sparkles, Code2, ChevronRight } from "lucide-react";
 import { SectionShell } from "./shared/section-shell";
 import { SectionHeader } from "./shared/section-header";
 import { IconTile } from "./shared/icon-tile";
@@ -26,14 +26,6 @@ const cards = [
     body:   "Drop the ZOVA web component anywhere — HTML, React, Vue, Svelte. Voice, memory, animation, and payments are already inside.",
     details: ["Web component", "Zero install", "Framework-agnostic", "CDN global"],
   },
-  {
-    number: "03",
-    label:  "Earn",
-    Icon:   Coins,
-    title:  "Charge per chat. Keep everything.",
-    body:   "Gate any skill behind pay-per-call USDC via x402. 0% platform cut during open beta — earnings settle to your wallet the same block.",
-    details: ["x402 protocol", "USDC settlement", "0% fee", "Real-time dashboard"],
-  },
 ];
 
 export function ProblemSolution() {
@@ -43,11 +35,11 @@ export function ProblemSolution() {
         number="02"
         label="The Platform"
         dark
-        title="Build, embed, and earn."
-        subtitle="A full-stack layer for 3D AI agents — from selfie to published character, from embed to on-chain earning."
+        title="Build and embed."
+        subtitle="A full-stack layer for 3D AI agents — from selfie to published character to a two-line embed on any site."
       />
 
-      <div className="grid grid-cols-1 border-t border-white/[0.07] md:grid-cols-3">
+      <div className="grid grid-cols-1 border-t border-white/[0.07] md:grid-cols-2">
         {cards.map((card, i) => (
           <motion.div
             key={card.number}

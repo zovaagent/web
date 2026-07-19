@@ -39,16 +39,8 @@ const STACK: StackPiece[] = [
       '<agent-3d> web component. Works in React, Vue, Svelte, and plain HTML. Lazy-loaded, isolated CSS, CDN-hosted globally. Voice, memory, and payments are built-in — zero config needed.',
   },
   {
-    id: 's4',
-    number: '04',
-    name: 'Pay-per-call',
-    tagline: 'HTTP-native USDC micropayments.',
-    description:
-      'Bill per skill, message, or session using the x402 protocol. 0% platform fee during open beta. Earnings flow to your wallet in real time — watch them move on your dashboard.',
-  },
-  {
     id: 's5',
-    number: '05',
+    number: '04',
     name: 'Walk',
     tagline: 'Multiplayer 3D worlds.',
     description:
@@ -56,7 +48,7 @@ const STACK: StackPiece[] = [
   },
   {
     id: 's6',
-    number: '06',
+    number: '05',
     name: 'SDK',
     tagline: 'JavaScript, Python, Rust.',
     description:
@@ -73,7 +65,7 @@ export const FaqInteractivePreview = () => {
         <div className="mb-16 flex flex-col gap-4">
           <SectionLabel number="07" label="The stack" />
           <h2 className="max-w-lg text-3xl font-semibold leading-tight text-zinc-900 lg:text-4xl">
-            Six pieces. One layer.
+            Five pieces. One layer.
           </h2>
           <p className="max-w-md text-sm leading-relaxed text-zinc-500">
             Every component is open, real, and shipping today. Use one. Use all. They compose.

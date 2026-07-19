@@ -23,7 +23,7 @@ const steps = [
     label: "SHIP",
     title: "Your site is alive",
     description:
-      "Visitors talk to your agent with text or voice. It remembers across sessions. Charge per chat with pay-per-call micropayments via x402.",
+      "Visitors talk to your agent with text or voice. It remembers across sessions and stays in-character across every visit.",
   },
 ];
 
@@ -37,7 +37,7 @@ export function HowItWorks() {
             Three steps. One living character.
           </h2>
           <p className="max-w-md text-sm leading-relaxed text-zinc-500">
-            From idea to embedded, talking, earning agent — in the time it takes to brew a coffee.
+            From idea to embedded, talking agent — in the time it takes to brew a coffee.
           </p>
         </div>
 
@@ -75,7 +75,7 @@ export function HowItWorks() {
           <span className="flex-1 h-px bg-zinc-200" />
           <span className="shrink-0 font-mono normal-case tracking-normal text-zinc-500">&lt;zova-agent /&gt;</span>
           <span className="flex-1 h-px bg-zinc-200" />
-          <span className="shrink-0">Earn USDC</span>
+          <span className="shrink-0">Live on your site</span>
         </div>
       </div>
     </section>

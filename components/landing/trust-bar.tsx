@@ -88,10 +88,8 @@ const ticker = [
   "110+ animation clips",
   "1-line embed",
   "Voice and memory built-in",
-  "x402 micropayments",
   "On-chain identity",
   "Multiplayer Walk mode",
-  "0% platform fee",
   "Apache-2.0 SDK",
   "SNS subdomains",
 ];

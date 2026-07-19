@@ -51,7 +51,6 @@ const docNavigation = [
     group: "Developer Platform",
     items: [
       { title: "Developer Overview", href: "/docs/developer-platform" },
-      { title: "Dashboard", href: "/docs/dashboard" },
       { title: "API Philosophy", href: "/docs/api-philosophy" },
       { title: "Design Principles", href: "/docs/design-principles" },
     ],
