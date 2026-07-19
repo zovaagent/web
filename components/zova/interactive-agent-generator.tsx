@@ -189,7 +189,7 @@ export function InteractiveAgentGenerator({ prefilledPrompt }: Props) {
                   handleGenerate(s.prompt);
                 }}
                 disabled={isLoading}
-                className="text-[11px] bg-white/[0.03] border border-white/10 text-white/50 hover:text-white hover:border-white/20 px-3 py-1.5 transition-all cursor-pointer whitespace-nowrap uppercase tracking-[0.14em]"
+                className="text-[11px] bg-white/[0.03] border border-white/10 text-white/50 hover:text-white hover:border-violet-500/40 hover:bg-violet-500/10 hover:shadow-[0_0_10px_rgba(139,92,246,0.15)] hover:-translate-y-0.5 rounded-sm px-3 py-1.5 transition-all duration-300 cursor-pointer whitespace-nowrap uppercase tracking-[0.14em]"
               >
                 {s.text}
               </button>
@@ -463,19 +463,39 @@ export function InteractiveAgentGenerator({ prefilledPrompt }: Props) {
                         </button>
                       </div>
 
-                      <div className="bg-black/80 border border-white/10 p-4 font-mono text-xs text-white/70 leading-relaxed overflow-y-auto max-h-[170px] space-y-1.5">
-                        {activeLogs.map((log, i) => (
-                          <div
-                            key={i}
-                            className={`truncate ${
-                              i === activeLogs.length - 1
-                                ? "text-[#a78bfa] border-l-2 border-[#6d4dff] pl-2 font-semibold"
-                                : ""
-                            }`}
-                          >
-                            {log}
-                          </div>
-                        ))}
+                      <div className="bg-black/80 border border-white/10 rounded-sm p-4 font-mono text-xs leading-relaxed overflow-y-auto max-h-[170px] space-y-1.5">
+                        {activeLogs.map((log, i) => {
+                          const isLast = i === activeLogs.length - 1;
+                          const bracket = log.match(/^(\[[^\]]+\])\s*(.*)$/);
+                          const tag = bracket?.[1] ?? "";
+                          const body = bracket?.[2] ?? log;
+                          const tagColor = /ZOVA-OS|SYSTEM/.test(tag)
+                            ? "text-cyan-400"
+                            : /KNOWLEDGE/.test(tag)
+                            ? "text-fuchsia-400"
+                            : /LAUNCH/.test(tag)
+                            ? "text-amber-400"
+                            : /STATUS/.test(tag)
+                            ? "text-emerald-400"
+                            : /^\[\d/.test(tag)
+                            ? "text-violet-400"
+                            : "text-neutral-500";
+                          return (
+                            <div
+                              key={i}
+                              className={`truncate ${
+                                isLast
+                                  ? "border-l-2 border-violet-500 pl-2 font-semibold"
+                                  : "pl-2"
+                              }`}
+                            >
+                              {tag && <span className={`${tagColor} font-semibold`}>{tag}</span>}{" "}
+                              <span className={isLast ? "text-white/95" : "text-white/60"}>
+                                {body}
+                              </span>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   )}

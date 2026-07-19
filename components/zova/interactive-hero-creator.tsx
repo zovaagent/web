@@ -128,40 +128,40 @@ export function InteractiveHeroCreator() {
   return (
     <div id="interactive-hero-creator" className="w-full">
 
-      {/* Top toolbar: header + preset selector */}
-      <div className="flex items-center justify-between gap-4 mb-3">
-        <div className="flex items-center gap-2">
-          <span className="inline-flex size-6 items-center justify-center border border-white/10 bg-white/[0.02] text-white/70">
-            <Terminal className="w-3 h-3" />
+      {/* Top toolbar: header status */}
+      <div className="flex items-center justify-between gap-4 mb-4">
+        <div className="flex items-center gap-2.5">
+          <span className="inline-flex size-7 items-center justify-center rounded-sm border border-violet-500/30 bg-violet-500/10 text-violet-300">
+            <Terminal className="w-3.5 h-3.5" />
           </span>
-          <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60">
-            Live Preview
+          <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70">
+            ZOVA Agent Engine
           </span>
           {isLive && !isProcessing ? (
-            <span className="inline-flex items-center gap-1 border border-white/10 bg-white/[0.02] text-[#a78bfa] text-[9px] px-1.5 py-0.5 font-mono uppercase tracking-[0.14em]">
-              <span className="w-1 h-1 bg-[#a78bfa] animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 rounded-sm border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-[10px] px-2 py-0.5 font-mono uppercase tracking-[0.14em]">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Active
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 border border-white/10 bg-white/[0.02] text-[#a78bfa] text-[9px] px-1.5 py-0.5 font-mono uppercase tracking-[0.14em]">
-              <RefreshCw className="w-2 h-2 animate-spin" />
+            <span className="inline-flex items-center gap-1.5 rounded-sm border border-violet-500/30 bg-violet-500/10 text-violet-300 text-[10px] px-2 py-0.5 font-mono uppercase tracking-[0.14em]">
+              <RefreshCw className="w-2.5 h-2.5 animate-spin" />
               Compiling
             </span>
           )}
         </div>
       </div>
 
-      {/* Preset tab strip */}
-      <div className="flex border border-white/10 border-b-0 divide-x divide-white/10 overflow-x-auto">
+      {/* Preset tab strip — rounded pill style */}
+      <div className="flex gap-2 mb-4 overflow-x-auto pb-1">
         {PRESET_OBJECTIVES.map((preset) => (
           <button
             key={preset.label}
             onClick={() => handlePresetSelect(preset)}
             disabled={isProcessing}
-            className={`flex-1 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] whitespace-nowrap transition-colors cursor-pointer ${
+            className={`px-4 py-2 text-xs font-medium rounded-sm border transition-all duration-300 whitespace-nowrap cursor-pointer hover:-translate-y-0.5 ${
               selectedPreset.label === preset.label
-                ? "bg-white/[0.06] text-white"
-                : "text-white/40 hover:text-white/70 hover:bg-white/[0.02]"
+                ? "bg-violet-950/40 border-violet-500/50 text-white shadow-[0_0_12px_rgba(139,92,246,0.25)]"
+                : "bg-neutral-900/30 border-neutral-800 text-white/50 hover:text-white hover:border-violet-500/40 hover:bg-violet-500/5 hover:shadow-[0_0_10px_rgba(139,92,246,0.15)]"
             }`}
           >
             {preset.label}
@@ -169,17 +169,17 @@ export function InteractiveHeroCreator() {
         ))}
       </div>
 
-      {/* Panel — full width, minimal */}
-      <div className="border border-white/10 bg-white/[0.015]">
+      {/* Panel — rounded, richer border */}
+      <div className="rounded-sm border border-white/10 bg-gradient-to-b from-neutral-900/60 to-neutral-950/80 backdrop-blur-xl overflow-hidden shadow-2xl shadow-black/40">
         {/* Objective bar */}
-        <div className="border-b border-white/10 px-5 py-4">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/25 block mb-1.5">
-            Objective
+        <div className="border-b border-white/10 px-6 py-5">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/40 block mb-2 font-mono">
+            Describe Objective:
           </span>
-          <div className="text-sm md:text-[15px] text-white/85 font-light leading-relaxed">
-            <span className="text-[#a78bfa] mr-1 select-none">“</span>
+          <div className="text-sm md:text-[15px] text-white/90 font-light leading-relaxed">
+            <span className="text-violet-400 mr-1 select-none">“</span>
             {selectedPreset.prompt}
-            <span className="text-[#a78bfa] ml-1 select-none">”</span>
+            <span className="text-violet-400 ml-1 select-none">”</span>
           </div>
         </div>
 
@@ -195,22 +195,22 @@ export function InteractiveHeroCreator() {
                 transition={{ duration: 0.2 }}
                 className="col-span-12 px-6 md:px-8 py-6"
               >
-                <div className="grid grid-cols-1 md:grid-cols-5 border border-white/10 divide-y md:divide-y-0 md:divide-x divide-white/10">
+                <div className="grid grid-cols-1 md:grid-cols-5 rounded-sm border border-white/10 divide-y md:divide-y-0 md:divide-x divide-white/10 overflow-hidden">
                   {steps.map((step) => {
                     const StepIcon = step.icon;
                     return (
                       <div
                         key={step.label}
                         className={`flex flex-col gap-3 p-5 transition-colors duration-300 ${
-                          step.status === "running" ? "bg-[#6d4dff]/[0.06]" : ""
+                          step.status === "running" ? "bg-violet-500/[0.08]" : ""
                         }`}
                       >
                         <span
-                          className={`inline-flex size-8 items-center justify-center border transition-colors ${
+                          className={`inline-flex size-9 items-center justify-center rounded-sm border transition-colors ${
                             step.status === "completed"
-                              ? "border-white/10 bg-white/[0.02] text-[#a78bfa]"
+                              ? "border-violet-500/30 bg-violet-500/10 text-violet-300"
                               : step.status === "running"
-                              ? "border-[#6d4dff]/40 bg-[#6d4dff]/10 text-[#a78bfa]"
+                              ? "border-violet-500/50 bg-violet-500/20 text-violet-200"
                               : "border-white/5 bg-transparent text-white/20"
                           }`}
                         >
@@ -254,20 +254,20 @@ export function InteractiveHeroCreator() {
               >
                 {/* Tools + Knowledge row */}
                 <div className="grid grid-cols-2 border-b border-white/10">
-                  <div className="flex flex-col gap-2.5 px-5 py-4 border-r border-white/10">
+                  <div className="flex flex-col gap-3 px-5 py-4 border-r border-white/10">
                     <div className="flex items-center gap-2">
-                      <span className="inline-flex size-5 items-center justify-center border border-white/10 text-white/70">
-                        <Wrench className="w-2.5 h-2.5" />
+                      <span className="inline-flex size-6 items-center justify-center rounded-sm border border-violet-500/30 bg-violet-500/10 text-violet-300">
+                        <Wrench className="w-3 h-3" />
                       </span>
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/40">
-                        Tools
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/60">
+                        Registered Tools
                       </span>
                     </div>
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-wrap gap-1.5">
                       {selectedPreset.tools.map((tool) => (
                         <span
                           key={tool}
-                          className="text-[11px] font-mono text-white/60 border-l border-white/10 pl-2 py-0.5"
+                          className="bg-neutral-900/60 border border-neutral-800 text-neutral-200 text-[10px] px-2 py-0.5 rounded-sm font-mono"
                         >
                           {tool}
                         </span>
@@ -275,20 +275,20 @@ export function InteractiveHeroCreator() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-2.5 px-5 py-4">
+                  <div className="flex flex-col gap-3 px-5 py-4">
                     <div className="flex items-center gap-2">
-                      <span className="inline-flex size-5 items-center justify-center border border-white/10 text-white/70">
-                        <Database className="w-2.5 h-2.5" />
+                      <span className="inline-flex size-6 items-center justify-center rounded-sm border border-cyan-500/30 bg-cyan-500/10 text-cyan-300">
+                        <Database className="w-3 h-3" />
                       </span>
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/40">
-                        Knowledge
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/60">
+                        Linked Knowledge
                       </span>
                     </div>
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-wrap gap-1.5">
                       {selectedPreset.knowledge.map((kb) => (
                         <span
                           key={kb}
-                          className="text-[11px] font-mono text-white/60 border-l border-white/10 pl-2 py-0.5"
+                          className="bg-neutral-900/60 border border-neutral-800 text-neutral-200 text-[10px] px-2 py-0.5 rounded-sm font-mono"
                         >
                           {kb}
                         </span>
@@ -298,33 +298,48 @@ export function InteractiveHeroCreator() {
                 </div>
 
                 {/* Output console — full width below */}
-                <div className="flex flex-col gap-2.5 px-5 py-4">
+                <div className="flex flex-col gap-2.5 px-5 py-4 bg-black/40">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <span className="inline-flex size-5 items-center justify-center border border-white/10 text-white/70">
-                        <Terminal className="w-2.5 h-2.5" />
+                      <span className="inline-flex size-6 items-center justify-center rounded-sm border border-emerald-500/30 bg-emerald-500/10 text-emerald-300">
+                        <Terminal className="w-3 h-3" />
                       </span>
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/40">
-                        Output Stream
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/60">
+                        Output
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono uppercase tracking-[0.14em] text-white/25">
-                      &gt;_ live
-                    </span>
                   </div>
-                  <div className="font-mono text-[10px] leading-relaxed text-white/50 space-y-0.5 max-h-[110px] overflow-hidden">
-                    {activeLogs.map((log, i) => (
-                      <div
-                        key={i}
-                        className={`truncate ${
-                          i === activeLogs.length - 1
-                            ? "text-white/90 border-l border-[#a78bfa] pl-2"
-                            : "pl-2"
-                        }`}
-                      >
-                        {log}
-                      </div>
-                    ))}
+                  <div className="font-mono text-[10px] leading-relaxed space-y-0.5 max-h-[110px] overflow-hidden">
+                    {activeLogs.map((log, i) => {
+                      const isLast = i === activeLogs.length - 1;
+                      const match = log.match(/^(\[[^\]]+\])\s*(.*)$/);
+                      const tag = match?.[1] ?? "";
+                      const body = match?.[2] ?? log;
+                      const tagColor = /ZOVA-OS|SYSTEM/.test(tag)
+                        ? "text-cyan-400"
+                        : /KNOWLEDGE/.test(tag)
+                        ? "text-fuchsia-400"
+                        : /LAUNCH/.test(tag)
+                        ? "text-amber-400"
+                        : /STATUS/.test(tag)
+                        ? "text-emerald-400"
+                        : /^\[\d/.test(tag)
+                        ? "text-violet-400"
+                        : "text-neutral-500";
+                      return (
+                        <div
+                          key={i}
+                          className={`truncate ${
+                            isLast ? "border-l-2 border-violet-500 pl-2" : "pl-2"
+                          }`}
+                        >
+                          {tag && <span className={`${tagColor} font-semibold`}>{tag}</span>}{" "}
+                          <span className={isLast ? "text-white/95" : "text-white/55"}>
+                            {body}
+                          </span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </motion.div>
@@ -342,7 +357,7 @@ export function InteractiveHeroCreator() {
           <button
             onClick={() => triggerSimulation(selectedPreset)}
             disabled={isProcessing}
-            className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/50 hover:text-white transition-colors cursor-pointer border border-white/10 hover:border-white/30 px-3 py-1.5"
+            className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/60 hover:text-white transition-all duration-300 cursor-pointer rounded-sm border border-white/10 hover:border-violet-500/40 hover:bg-violet-500/10 hover:shadow-[0_0_10px_rgba(139,92,246,0.2)] px-3 py-1.5"
           >
             <RefreshCw
               className={`w-3 h-3 ${isProcessing ? "animate-spin" : ""}`}

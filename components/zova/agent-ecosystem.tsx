@@ -114,18 +114,16 @@ export function AgentEcosystem({ onSelectPrompt }: Props) {
   };
 
   return (
-    <section
-      id="agent-ecosystem"
-      className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-32"
-    >
+    <section id="agent-ecosystem" className="w-full bg-[#050505]">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-32">
       <div className="mb-16 flex flex-col gap-4">
-        <SectionLabel number="03" label="Ecosystem Suite" dark />
+        <SectionLabel number="" label="Ecosystem Suite" dark />
         <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-white max-w-xl leading-tight">
           What will your agent do?
         </h2>
         <p className="text-sm leading-relaxed text-white/40 max-w-md">
-          Production-grade autonomous agent blueprints, optimized to perform
-          specific industrial workflows.
+          Select and configure our production-grade autonomous agent
+          blueprints, optimized to perform specific industrial workflows.
         </p>
       </div>
 
@@ -141,13 +139,13 @@ export function AgentEcosystem({ onSelectPrompt }: Props) {
               viewport={{ once: true, amount: 0.2 }}
               variants={row}
               onClick={() => handleConfigure(preset.prompt)}
-              className="group grid w-full grid-cols-[40px_56px_1fr_auto] items-start gap-6 md:gap-10 border-b border-white/10 py-7 text-left transition-colors duration-200 hover:bg-white/[0.03] cursor-pointer"
+              className="group grid w-full grid-cols-[40px_56px_1fr_auto] items-start gap-6 md:gap-10 border-b border-white/10 py-7 text-left transition-all duration-300 hover:bg-gradient-to-r hover:from-violet-500/[0.06] hover:to-transparent hover:pl-2 cursor-pointer"
             >
               <span className="text-[11px] font-semibold tabular-nums tracking-[0.18em] text-white/25 mt-2 select-none">
                 {preset.index}
               </span>
 
-              <span className="inline-flex size-10 items-center justify-center border border-white/10 bg-white/[0.02] text-white/70 group-hover:text-[#a78bfa] group-hover:border-[#6d4dff]/40 transition-colors">
+              <span className="inline-flex size-10 items-center justify-center rounded-sm border border-white/10 bg-white/[0.02] text-white/70 group-hover:text-[#a78bfa] group-hover:border-[#6d4dff]/40 group-hover:bg-violet-500/10 group-hover:shadow-[0_0_16px_rgba(139,92,246,0.25)] transition-all duration-300">
                 <Icon className="h-4 w-4" />
               </span>
 
@@ -168,22 +166,13 @@ export function AgentEcosystem({ onSelectPrompt }: Props) {
                 </span>
               </div>
 
-              <span className="hidden md:inline-flex size-9 items-center justify-center border border-white/10 text-white/40 group-hover:text-white group-hover:border-white/30 group-hover:bg-white/[0.04] transition-all mt-1">
+              <span className="hidden md:inline-flex size-9 items-center justify-center rounded-sm border border-white/10 text-white/40 group-hover:text-white group-hover:border-violet-500/50 group-hover:bg-violet-500/10 transition-all duration-300 mt-1">
                 <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </span>
             </motion.button>
           );
         })}
       </div>
-
-      <div className="mt-10 flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/25">
-        <span className="shrink-0">Blueprint</span>
-        <span className="flex-1 h-px bg-white/10" />
-        <span className="shrink-0 font-mono normal-case tracking-normal text-white/50">
-          zova://ecosystem/*
-        </span>
-        <span className="flex-1 h-px bg-white/10" />
-        <span className="shrink-0">Deploy</span>
       </div>
     </section>
   );

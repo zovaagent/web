@@ -83,7 +83,7 @@ const FEATURES = [
     index: "01",
     icon: Code2,
     title: "Agent SDK",
-    desc: "Modular TypeScript and Python client libraries to build and monitor agents programmatically.",
+    desc: "Highly intuitive, modular TypeScript/Python client libraries to build and monitor agents programmatically.",
   },
   {
     index: "02",
@@ -95,7 +95,7 @@ const FEATURES = [
     index: "03",
     icon: Terminal,
     title: "Unified REST API",
-    desc: "Integrate autonomous agents into applications, CRMs, and continuous integration pipelines over secure endpoints.",
+    desc: "Integrate autonomous agents into your existing applications, CRMs, and continuous integration pipelines over secure endpoints.",
   },
 ];
 
@@ -110,20 +110,19 @@ export function BuildersSection() {
   };
 
   return (
-    <section
-      id="builders-section"
-      className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-32"
-    >
+    <section id="builders-section" className="w-full bg-[#050505]">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-32">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         <div className="lg:col-span-5 flex flex-col gap-10">
           <div className="flex flex-col gap-4">
-            <SectionLabel number="06" label="Developer Platform" dark />
+            <SectionLabel number="" label="Developer Platform" dark />
             <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-white leading-tight">
               Build the next generation of agents.
             </h2>
             <p className="text-sm leading-relaxed text-white/40 max-w-md">
-              Complete programmatic access via SDK, declarative JSON schemas,
-              and standard REST APIs. Develop locally, compile, deploy globally.
+              ZOVA provides complete programmatic access via our SDK,
+              declarative JSON schemas, and standard REST APIs. Develop
+              locally, compile schemas, deploy globally, and scale safely.
             </p>
           </div>
 
@@ -131,12 +130,12 @@ export function BuildersSection() {
             {FEATURES.map(({ index, icon: Icon, title, desc }) => (
               <div
                 key={title}
-                className="group grid grid-cols-[40px_56px_1fr] items-start gap-6 border-b border-white/10 py-6"
+                className="group grid grid-cols-[40px_56px_1fr] items-start gap-6 border-b border-white/10 py-6 transition-all duration-300 hover:bg-gradient-to-r hover:from-violet-500/[0.06] hover:to-transparent hover:pl-2"
               >
                 <span className="text-[11px] font-semibold tabular-nums tracking-[0.18em] text-white/25 mt-2 select-none">
                   {index}
                 </span>
-                <span className="inline-flex size-10 items-center justify-center border border-white/10 bg-white/[0.02] text-white/70 group-hover:text-[#a78bfa] group-hover:border-[#6d4dff]/40 transition-colors">
+                <span className="inline-flex size-10 items-center justify-center rounded-sm border border-white/10 bg-white/[0.02] text-white/70 group-hover:text-[#a78bfa] group-hover:border-[#6d4dff]/40 group-hover:bg-violet-500/10 group-hover:shadow-[0_0_16px_rgba(139,92,246,0.25)] transition-all duration-300">
                   <Icon className="h-4 w-4" />
                 </span>
                 <div className="flex flex-col gap-1">
@@ -179,7 +178,7 @@ export function BuildersSection() {
               </span>
               <button
                 onClick={handleCopy}
-                className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/50 hover:text-white border border-white/10 hover:border-white/30 px-2.5 py-1.5 cursor-pointer transition-colors"
+                className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/50 hover:text-white rounded-sm border border-white/10 hover:border-violet-500/40 hover:bg-violet-500/10 hover:shadow-[0_0_10px_rgba(139,92,246,0.2)] px-2.5 py-1.5 cursor-pointer transition-all duration-300"
               >
                 {isCopied ? (
                   <>
@@ -209,6 +208,7 @@ export function BuildersSection() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

@@ -49,9 +49,9 @@ const STEPS: WorkflowStep[] = [
   {
     number: "05",
     label: "Reasoning",
-    title: "Autonomous loop",
+    title: "Gemini-powered loop",
     description:
-      "The core that assesses state, generates steps, and monitors success criteria.",
+      "The autonomous core that assesses state, generates steps, and monitors success criteria.",
     icon: Brain,
   },
   {
@@ -66,12 +66,10 @@ const STEPS: WorkflowStep[] = [
 
 export function AgentWorkflow() {
   return (
-    <section
-      id="agent-workflow"
-      className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-32"
-    >
+    <section id="agent-workflow" className="w-full bg-[#050505]">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-32">
       <div className="mb-20 flex flex-col gap-4">
-        <SectionLabel number="04" label="Agent Lifecycle" dark />
+        <SectionLabel number="" label="Agent Lifecycle" dark />
         <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-white max-w-xl leading-tight">
           The Autonomy Pipeline.
         </h2>
@@ -100,7 +98,7 @@ export function AgentWorkflow() {
                 duration: 0.5,
                 ease: [0.25, 0.1, 0.25, 1],
               }}
-              className={`group relative flex flex-col gap-4 p-8 lg:p-10 ${border} ${isMd} ${noMdLeft} ${isLg} ${noLgLeft}`}
+              className={`group relative flex flex-col gap-4 p-8 lg:p-10 transition-all duration-300 hover:bg-gradient-to-br hover:from-violet-500/[0.06] hover:to-transparent cursor-default ${border} ${isMd} ${noMdLeft} ${isLg} ${noLgLeft}`}
             >
               <div className="flex items-center gap-3">
                 <span className="text-[10px] font-semibold tabular-nums tracking-[0.22em] text-white/25 uppercase">
@@ -111,7 +109,7 @@ export function AgentWorkflow() {
                 </span>
               </div>
 
-              <span className="inline-flex size-10 items-center justify-center border border-white/10 bg-white/[0.02] text-white/70 group-hover:text-[#a78bfa] group-hover:border-[#6d4dff]/40 transition-colors">
+              <span className="inline-flex size-10 items-center justify-center rounded-sm border border-white/10 bg-white/[0.02] text-white/70 group-hover:text-[#a78bfa] group-hover:border-[#6d4dff]/40 group-hover:bg-violet-500/10 group-hover:shadow-[0_0_16px_rgba(139,92,246,0.25)] transition-all duration-300">
                 <Icon className="h-4 w-4" />
               </span>
 
@@ -125,15 +123,6 @@ export function AgentWorkflow() {
           );
         })}
       </div>
-
-      <div className="mt-10 flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/25">
-        <span className="shrink-0">Input</span>
-        <span className="flex-1 h-px bg-white/10" />
-        <span className="shrink-0 font-mono normal-case tracking-normal text-white/50">
-          reasoning loop
-        </span>
-        <span className="flex-1 h-px bg-white/10" />
-        <span className="shrink-0">Execution</span>
       </div>
     </section>
   );

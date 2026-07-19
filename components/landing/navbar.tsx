@@ -29,18 +29,15 @@ export function Navbar() {
 
   return (
     <div className="fixed left-0 top-0 z-50 w-screen font-sans">
-      <Announcement3
-        message="Create · Deploy · Scale intelligent agents"
-        ctaLabel="Try Compiler"
-        ctaHref="#interactive-agent-generator"
-      />
-
       <header className="border-b border-white/10 bg-[#05050a]">
         <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-6">
-            <Link href="/" className="flex shrink-0 items-center gap-2.5">
+            <Link href="/" className="flex shrink-0 items-center gap-3">
               <ZovaLogo size={22} />
               <ZovaWordmark height={13} className="text-white" />
+              <span className="hidden sm:inline text-[9px] uppercase tracking-widest text-white/40 border-l border-white/20 pl-3 leading-none font-mono">
+                Zone of<br />Virtual Autonomy
+              </span>
             </Link>
 
             <span aria-hidden="true" className="hidden text-white/20 lg:inline">/</span>
@@ -58,16 +55,12 @@ export function Navbar() {
             </ul>
           </div>
 
-          <div className="hidden items-center gap-2 lg:flex">
-            <div className="flex items-center gap-1">
-              {socials.map(({ label, href, Icon }) => (
-                <Link key={label} href={href} aria-label={label}
-                  className="inline-flex size-8 items-center justify-center text-white/40 transition-colors hover:text-white"
-                >
-                  <Icon className="h-4 w-4" />
-                </Link>
-              ))}
-            </div>
+          <div className="hidden items-center gap-4 lg:flex">
+            <Link href="#interactive-agent-generator"
+              className={`${linkText} text-white/60 transition-colors hover:text-white`}
+            >
+              Sign In
+            </Link>
 
             <Link href="#interactive-agent-generator"
               className={`${linkText} border border-transparent bg-[#6d4dff]/15 px-4 py-2 text-[#a78bfa] transition-colors hover:bg-[#6d4dff]/25 hover:text-white inline-flex items-center gap-1.5`}

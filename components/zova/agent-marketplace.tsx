@@ -191,19 +191,17 @@ export function AgentMarketplace({ onSelectPrompt }: Props) {
   ];
 
   return (
-    <section
-      id="agent-marketplace"
-      className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-32"
-    >
+    <section id="agent-marketplace" className="w-full bg-[#050505]">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-32">
       <div className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-8">
         <div className="flex flex-col gap-4">
-          <SectionLabel number="05" label="Agent Repository" dark />
+          <SectionLabel number="" label="Agent Repository" dark />
           <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.02em] text-white max-w-xl leading-tight">
             Discover pre-built templates.
           </h2>
           <p className="text-sm leading-relaxed text-white/40 max-w-md">
-            Ready-to-deploy digital agents built by ZOVA Labs and verified
-            enterprise contributors.
+            Explore ready-to-deploy digital agents built by ZOVA Labs and
+            verified enterprise contributors.
           </p>
         </div>
 
@@ -212,10 +210,10 @@ export function AgentMarketplace({ onSelectPrompt }: Props) {
             <button
               key={id}
               onClick={() => setActiveTab(id)}
-              className={`inline-flex items-center gap-2 px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.16em] transition-colors cursor-pointer whitespace-nowrap ${
+              className={`inline-flex items-center gap-2 px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 cursor-pointer whitespace-nowrap ${
                 activeTab === id
-                  ? "bg-white/[0.06] text-white"
-                  : "text-white/40 hover:text-white/70 hover:bg-white/[0.02]"
+                  ? "bg-violet-500/10 text-white border-b-2 border-violet-500"
+                  : "text-white/40 hover:text-white hover:bg-violet-500/5 border-b-2 border-transparent"
               }`}
             >
               <Icon className="h-3 w-3" />
@@ -244,13 +242,13 @@ export function AgentMarketplace({ onSelectPrompt }: Props) {
                   animate="visible"
                   variants={row}
                   onClick={() => handleDeploy(agent.prompt)}
-                  className="group grid w-full grid-cols-[40px_56px_1fr_auto] items-start gap-6 md:gap-10 border-b border-white/10 py-8 text-left transition-colors duration-200 hover:bg-white/[0.03] cursor-pointer"
+                  className="group grid w-full grid-cols-[40px_56px_1fr_auto] items-start gap-6 md:gap-10 border-b border-white/10 py-8 text-left transition-all duration-300 hover:bg-gradient-to-r hover:from-violet-500/[0.06] hover:to-transparent hover:pl-2 cursor-pointer"
                 >
                   <span className="text-[11px] font-semibold tabular-nums tracking-[0.18em] text-white/25 mt-2 select-none">
                     {agent.index}
                   </span>
 
-                  <span className="inline-flex size-10 items-center justify-center border border-white/10 bg-white/[0.02] text-white/70 group-hover:text-[#a78bfa] group-hover:border-[#6d4dff]/40 transition-colors">
+                  <span className="inline-flex size-10 items-center justify-center rounded-sm border border-white/10 bg-white/[0.02] text-white/70 group-hover:text-[#a78bfa] group-hover:border-[#6d4dff]/40 group-hover:bg-violet-500/10 group-hover:shadow-[0_0_16px_rgba(139,92,246,0.25)] transition-all duration-300">
                     <Icon className="h-4 w-4" />
                   </span>
 
@@ -282,7 +280,7 @@ export function AgentMarketplace({ onSelectPrompt }: Props) {
                     </div>
                   </div>
 
-                  <span className="hidden md:inline-flex size-9 items-center justify-center border border-white/10 text-white/40 group-hover:text-white group-hover:border-white/30 group-hover:bg-white/[0.04] transition-all mt-1">
+                  <span className="hidden md:inline-flex size-9 items-center justify-center rounded-sm border border-white/10 text-white/40 group-hover:text-white group-hover:border-violet-500/50 group-hover:bg-violet-500/10 transition-all duration-300 mt-1">
                     <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </span>
                 </motion.button>
@@ -291,15 +289,6 @@ export function AgentMarketplace({ onSelectPrompt }: Props) {
           </motion.div>
         </AnimatePresence>
       </div>
-
-      <div className="mt-10 flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/25">
-        <span className="shrink-0">Marketplace</span>
-        <span className="flex-1 h-px bg-white/10" />
-        <span className="shrink-0 font-mono normal-case tracking-normal text-white/50">
-          zova://blueprints
-        </span>
-        <span className="flex-1 h-px bg-white/10" />
-        <span className="shrink-0">Deploy</span>
       </div>
     </section>
   );
