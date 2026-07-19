@@ -88,7 +88,7 @@ export default function ZovaAgentsPage() {
             title: "Social",
             links: [
               { label: "GitHub", href: "https://github.com/zova-ai" },
-              { label: "X / Twitter", href: "https://x.com/zovaAI" },
+              { label: "X / Twitter", href: "https://x.com/zovaagent" },
               { label: "Blog", href: "#blog" },
               { label: "Docs", href: "#builders-section" },
             ],

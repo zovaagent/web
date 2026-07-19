@@ -19,7 +19,7 @@ const navLinks = [
 
 const socials = [
   { label: "GitHub", href: "https://github.com/zova-ai", Icon: FaGithub  },
-  { label: "X",      href: "https://x.com/zovaAI",       Icon: FaXTwitter },
+  { label: "X",      href: "https://x.com/zovaagent",       Icon: FaXTwitter },
 ];
 
 const linkText = "text-[11px] font-medium uppercase tracking-[0.16em]";

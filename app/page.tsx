@@ -71,7 +71,7 @@ export default function HomePage() {
               { label: "About",         href: "#about"       },
               { label: "Blog",          href: "#blog"        },
               { label: "GitHub",        href: "https://github.com/zova-ai" },
-              { label: "X / Twitter",   href: "https://x.com/zovaAI"       },
+              { label: "X / Twitter",   href: "https://x.com/zovaagent"       },
             ],
           },
         ]}
