@@ -35,10 +35,6 @@ export default function HomePage() {
         bannerHeading="Your AI deserves a body. ZOVA handles the mesh, voice, memory, and payments."
         bannerCtaLabel="Build your agent"
         bannerCtaHref="#forge"
-        contactLabel="Developer Hub :"
-        contactEmail="docs.zova.ai"
-        contactEmailHref="#docs"
-        description="ZOVA is the 3D agent layer of the internet — from selfie to published agent, from embed to earning USDC per chat."
         brandName={<ZovaWordmark height={12} className="text-white/70" />}
         copyright={<span className="inline-flex items-center gap-1.5">© 2026 <ZovaWordmark height={10} /> · Apache-2.0 · Built on Solana</span>}
         linkColumns={[

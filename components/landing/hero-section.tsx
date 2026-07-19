@@ -3,7 +3,6 @@
 import { useRef } from 'react'
 import Link from 'next/link'
 import { ChevronRight, Terminal, Sparkles, Code2, Coins } from 'lucide-react'
-import { ShaderGradientCanvas, ShaderGradient } from '@shadergradient/react'
 import { type Variants } from 'motion/react'
 import { TimelineAnimation } from '@/components/timeline-animation'
 import { Button } from '@/components/ui/button'
@@ -40,50 +39,6 @@ export function HeroSection() {
       className="relative min-h-screen w-full overflow-hidden flex flex-col"
       style={{ background: '#07070f' }}
     >
-      {/* Shader gradient */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <ShaderGradientCanvas
-          style={{ width: '100%', height: '100%', pointerEvents: 'none' }}
-          pointerEvents="none"
-          pixelDensity={1}
-        >
-          <ShaderGradient
-            animate="on"
-            type="sphere"
-            wireframe={false}
-            shader="defaults"
-            uTime={0}
-            uSpeed={0.15}
-            uStrength={0.5}
-            uDensity={1.0}
-            uFrequency={5.5}
-            uAmplitude={3.0}
-            positionX={0.6}
-            positionY={0.1}
-            positionZ={0}
-            rotationX={0}
-            rotationY={130}
-            rotationZ={50}
-            color1="#6d4dff"
-            color2="#07070f"
-            color3="#1a0838"
-            reflection={0.25}
-            cAzimuthAngle={270}
-            cPolarAngle={180}
-            cDistance={0.5}
-            cameraZoom={13}
-            lightType="env"
-            brightness={0.8}
-            envPreset="city"
-            grain="on"
-            toggleAxis={false}
-            zoomOut={false}
-            hoverState=""
-            enableTransition={false}
-          />
-        </ShaderGradientCanvas>
-      </div>
-
       <ParticlesBg />
 
       {/* Top edge fade */}

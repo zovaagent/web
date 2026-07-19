@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { ZovaWordmark } from "@/components/landing/zova-wordmark";
 import { FaArrowRight, FaXTwitter, FaTelegram } from "react-icons/fa6";
 import type { IconType } from "react-icons";
-import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
 
 export interface Footer10NavLink {
   label: string;
@@ -34,10 +33,6 @@ export interface Footer10Props {
   bannerHeading?: string;
   bannerCtaLabel?: React.ReactNode;
   bannerCtaHref?: string;
-  contactLabel?: string;
-  contactEmail?: string;
-  contactEmailHref?: string;
-  description?: React.ReactNode;
   newsletterPlaceholder?: string;
   onSubscribe?: (email: string) => void;
   linkColumns?: Footer10LinkColumn[];
@@ -55,12 +50,6 @@ export function Footer10({
     </>
   ),
   bannerCtaHref = "#",
-  contactLabel = "Reach out :",
-  contactEmail = "hello@zova.ai",
-  contactEmailHref = "mailto:hello@zova.ai",
-  description = (
-    <>Intelligence infrastructure for autonomous AI systems. REST API, webhooks, SDK — production-ready from day one.</>
-  ),
   newsletterPlaceholder = "Email address",
   onSubscribe,
   linkColumns = [],
@@ -88,59 +77,8 @@ export function Footer10({
       style={{ background: "#07070f" }}
     >
       <div className="mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
-        {/* Top banner — ShaderGradient background (same shader as hero) */}
-        <div className="relative overflow-hidden rounded-none border border-white/10 px-6 py-12 sm:px-12 sm:py-16 md:px-16 lg:py-20">
-          <div className="absolute inset-0 z-0" style={{ background: "#07070f" }}>
-            <ShaderGradientCanvas
-              style={{ width: "100%", height: "100%" }}
-              pointerEvents="none"
-              pixelDensity={1}
-            >
-              <ShaderGradient
-                animate="on"
-                type="sphere"
-                wireframe={false}
-                shader="defaults"
-                uTime={0}
-                uSpeed={0.15}
-                uStrength={0.5}
-                uDensity={1.0}
-                uFrequency={5.5}
-                uAmplitude={3.0}
-                positionX={0.6}
-                positionY={0.1}
-                positionZ={0}
-                rotationX={0}
-                rotationY={130}
-                rotationZ={50}
-                color1="#6d4dff"
-                color2="#07070f"
-                color3="#1a0838"
-                reflection={0.25}
-                cAzimuthAngle={270}
-                cPolarAngle={180}
-                cDistance={0.5}
-                cameraZoom={13}
-                lightType="env"
-                brightness={0.8}
-                envPreset="city"
-                grain="on"
-                toggleAxis={false}
-                zoomOut={false}
-                hoverState=""
-                enableTransition={false}
-              />
-            </ShaderGradientCanvas>
-          </div>
-          {/* Left-side readability veil so text stays legible */}
-          <div
-            className="pointer-events-none absolute inset-0 z-[1]"
-            style={{
-              background:
-                "linear-gradient(90deg, rgba(7,7,15,0.85) 0%, rgba(7,7,15,0.55) 45%, rgba(7,7,15,0) 100%)",
-            }}
-          />
-
+        {/* Top banner */}
+        <div className="relative overflow-hidden rounded-none border border-white/10 px-6 py-12 sm:px-12 sm:py-16 md:px-16 lg:py-20" style={{ background: "#07070f" }}>
           <div className="relative z-10 flex h-full flex-col justify-between gap-8">
             <div className="inline-flex items-center gap-2 self-start">
               <span className="size-2 rounded-full bg-[#a78bfa] shadow-[0_0_12px_#a78bfa]" />
@@ -170,24 +108,6 @@ export function Footer10({
         {/* Middle grid — sits on dark footer bg */}
         <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="flex flex-col justify-between gap-6 lg:col-span-5">
-            <div>
-              <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-white/50">
-                {contactLabel}
-              </p>
-
-              <a
-                href={contactEmailHref}
-                className="group mt-3 inline-flex items-baseline gap-2.5 rounded-none text-2xl font-light tracking-tight text-white transition-colors duration-200 hover:text-[#a78bfa] focus:outline-none focus:ring-2 focus:ring-[#6d4dff]/40 sm:text-3xl"
-              >
-                <span>{contactEmail}</span>
-                <FaArrowRight className="size-5 transition-transform duration-200 ease-in-out group-hover:translate-x-2" />
-              </a>
-            </div>
-
-            <p className="max-w-md text-sm leading-relaxed text-white/50">
-              {description}
-            </p>
-
             {socials.length > 0 && (
               <div className="flex items-center gap-2">
                 {socials.map(({ label, href, Icon }) => (
