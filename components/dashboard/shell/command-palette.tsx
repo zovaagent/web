@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { useUiStore } from "@/stores/dashboard/ui-store";
 import { useAgentsStore } from "@/stores/dashboard/agents-store";
+import { AgentAvatar } from "@/components/dashboard/common/agent-avatar";
 
 const ROUTES = [
   { label: "Mission Control", href: "/dashboard", icon: LayoutDashboard },
@@ -86,14 +87,7 @@ export function CommandPalette() {
               value={`agent ${a.name} ${a.role}`}
               onSelect={() => go(`/dashboard/agents/${a.id}`)}
             >
-              <span
-                className="flex size-6 items-center justify-center rounded-md text-[10px] font-semibold text-white"
-                style={{
-                  background: `linear-gradient(135deg, ${a.gradient[0]}, ${a.gradient[1]})`,
-                }}
-              >
-                {a.name.slice(0, 1)}
-              </span>
+              <AgentAvatar seed={a.name} gradient={a.gradient} size={24} rounded="md" />
               <div className="flex flex-col">
                 <span className="text-[13px]">{a.name}</span>
                 <span className="text-[11px] text-white/45">{a.role}</span>

@@ -1,10 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Bot, MessageSquare, Search, ShoppingCart, TrendingUp, Wrench } from "lucide-react";
 import { QuickActionBar } from "@/components/dashboard/mission-control/quick-action-bar";
 import { GlowCard } from "@/components/dashboard/common/glow-card";
 import { SectionHeader } from "@/components/dashboard/common/section-header";
+import { AvatarCustomizer } from "@/components/dashboard/create/avatar-customizer";
+import type { AvatarLook } from "@/lib/dashboard/avatar";
 
 const TEMPLATES = [
   { id: "research", name: "Research Analyst", icon: Search, description: "Continuously monitor a topic, deliver weekly synthesis.", gradient: "from-[#a78bfa] to-[#7c3aed]" },
@@ -16,8 +19,11 @@ const TEMPLATES = [
 ];
 
 export default function CreateAgentPage() {
+  const [name, setName] = useState("New Agent");
+  const [look, setLook] = useState<AvatarLook | undefined>(undefined);
+
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-4 py-16 md:px-8 md:py-24">
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-4 py-16 md:px-8 md:py-20">
       <div className="flex flex-col items-center gap-4 text-center">
         <motion.p
           initial={{ opacity: 0, y: 4 }}
@@ -46,7 +52,41 @@ export default function CreateAgentPage() {
 
       <QuickActionBar />
 
-      <div className="mt-6 flex flex-col gap-4">
+      <motion.div
+        initial={{ opacity: 0, y: 6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="flex flex-col gap-5"
+      >
+        <SectionHeader
+          eyebrow="Identity"
+          title="Give it a face"
+          description="Design how your agent shows up across Mission Control, Activity, and shared links."
+        />
+
+        <GlowCard className="p-6 md:p-8">
+          <div className="mb-6 flex flex-col gap-1.5">
+            <label className="text-[11px] font-medium uppercase tracking-widest text-white/40">
+              Agent name
+            </label>
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value || "New Agent")}
+              placeholder="e.g. Atlas"
+              className="h-11 w-full rounded-lg border border-white/[0.06] bg-white/[0.02] px-3.5 text-[15px] font-medium text-white placeholder:text-white/30 focus:border-[rgba(167,139,250,0.35)] focus:outline-none focus:shadow-[0_0_0_1px_rgba(167,139,250,0.25)]"
+            />
+          </div>
+
+          <AvatarCustomizer
+            seed={name}
+            gradient={["8b5cf6", "6d28d9"]}
+            value={look}
+            onChange={setLook}
+          />
+        </GlowCard>
+      </motion.div>
+
+      <div className="flex flex-col gap-4">
         <SectionHeader eyebrow="Or start from" title="Templates" />
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
           {TEMPLATES.map((t) => (

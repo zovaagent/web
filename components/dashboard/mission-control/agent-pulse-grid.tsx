@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { GlowCard } from "@/components/dashboard/common/glow-card";
 import { PulseDot } from "@/components/dashboard/common/pulse-dot";
+import { AgentAvatar } from "@/components/dashboard/common/agent-avatar";
 import { useAgentsStore } from "@/stores/dashboard/agents-store";
 
 export function AgentPulseGrid() {
@@ -34,14 +35,7 @@ export function AgentPulseGrid() {
               href={`/dashboard/agents/${a.id}`}
               className="group flex items-center gap-3 rounded-lg px-2 py-2.5 transition-colors hover:bg-white/[0.03]"
             >
-              <span
-                className="flex size-8 shrink-0 items-center justify-center rounded-lg text-[12px] font-semibold text-white"
-                style={{
-                  background: `linear-gradient(135deg, ${a.gradient[0]}, ${a.gradient[1]})`,
-                }}
-              >
-                {a.name.slice(0, 1)}
-              </span>
+              <AgentAvatar seed={a.name} gradient={a.gradient} size={32} rounded="lg" />
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline justify-between gap-2">
                   <span className="truncate text-[13px] font-medium text-white">

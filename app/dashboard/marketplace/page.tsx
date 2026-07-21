@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Download, Star } from "lucide-react";
 import { SectionHeader } from "@/components/dashboard/common/section-header";
 import { GlowCard } from "@/components/dashboard/common/glow-card";
+import { AgentAvatar } from "@/components/dashboard/common/agent-avatar";
 import { SEED_MARKETPLACE } from "@/lib/dashboard/mock-data";
 import { formatNumber } from "@/lib/dashboard/format";
 import type { AgentCategory } from "@/lib/dashboard/types";
@@ -73,12 +74,7 @@ export default function MarketplacePage() {
                 </span>
               )}
               <div className="flex items-center gap-3">
-                <span
-                  className="flex size-11 items-center justify-center rounded-xl text-[15px] font-semibold text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)]"
-                  style={{ background: `linear-gradient(135deg, ${m.gradient[0]}, ${m.gradient[1]})` }}
-                >
-                  {m.name.slice(0, 1)}
-                </span>
+                <AgentAvatar seed={m.name} gradient={m.gradient} size={44} rounded="xl" />
                 <div>
                   <div className="text-[15px] font-medium text-white">{m.name}</div>
                   <div className="text-[11px] uppercase tracking-widest text-white/40">{m.category}</div>

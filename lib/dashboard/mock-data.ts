@@ -48,7 +48,7 @@ function mem(seed: string, entries: [string, string][]): MemoryEntry[] {
 export const SEED_AGENTS: Agent[] = [
   {
     id: "research-01",
-    name: "Atlas",
+    name: "Aria Chen",
     role: "Research Analyst",
     category: "Research",
     gradient: g("#a78bfa", "#7c3aed"),
@@ -82,7 +82,7 @@ export const SEED_AGENTS: Agent[] = [
   },
   {
     id: "seo-01",
-    name: "Lumen",
+    name: "Marcus Silva",
     role: "SEO Content Agent",
     category: "Marketing",
     gradient: g("#c084fc", "#9333ea"),
@@ -115,7 +115,7 @@ export const SEED_AGENTS: Agent[] = [
   },
   {
     id: "sdr-01",
-    name: "Pulse",
+    name: "Priya Kapoor",
     role: "SDR Prospecting Agent",
     category: "Sales",
     gradient: g("#8b5cf6", "#6d28d9"),
@@ -147,7 +147,7 @@ export const SEED_AGENTS: Agent[] = [
   },
   {
     id: "support-01",
-    name: "Ember",
+    name: "Elena Rossi",
     role: "Support Triage",
     category: "Support",
     gradient: g("#a855f7", "#7e22ce"),
@@ -172,7 +172,7 @@ export const SEED_AGENTS: Agent[] = [
   },
   {
     id: "ops-01",
-    name: "Beacon",
+    name: "Kenji Watanabe",
     role: "Ops Watcher",
     category: "Operations",
     gradient: g("#a78bfa", "#5b21b6"),
@@ -203,7 +203,7 @@ export const SEED_AGENTS: Agent[] = [
   },
   {
     id: "codegen-01",
-    name: "Forge",
+    name: "Amara Okafor",
     role: "Codegen Assistant",
     category: "Development",
     gradient: g("#b794f6", "#6b21a8"),
@@ -229,7 +229,7 @@ export const SEED_AGENTS: Agent[] = [
   },
   {
     id: "analyst-01",
-    name: "Prism",
+    name: "Diego Herrera",
     role: "Data Analyst",
     category: "Operations",
     gradient: g("#c4b5fd", "#7c3aed"),
@@ -258,7 +258,7 @@ export const SEED_AGENTS: Agent[] = [
   },
   {
     id: "recruiter-01",
-    name: "Nova",
+    name: "Noor Al-Amin",
     role: "Recruiting Sourcer",
     category: "Operations",
     gradient: g("#d8b4fe", "#a855f7")
@@ -282,18 +282,18 @@ export const SEED_AGENTS: Agent[] = [
 
 // Marketplace — installable agents (superset, mostly unique from user's own)
 export const SEED_MARKETPLACE: MarketplaceAgent[] = [
-  { id: "m-1", name: "Scout", category: "Research", tagline: "Deep-research any topic with cited sources.", installs: 12800, gradient: g("#a78bfa", "#7c3aed"), featured: true },
-  { id: "m-2", name: "Sable", category: "Marketing", tagline: "Turns product changes into launch copy.", installs: 9410, gradient: g("#c084fc", "#9333ea") },
-  { id: "m-3", name: "Reach", category: "Sales", tagline: "Personalized outbound at 40 accounts/day.", installs: 7620, gradient: g("#8b5cf6", "#6d28d9") },
-  { id: "m-4", name: "Docket", category: "Development", tagline: "Reads PRs and writes changelogs you'd ship.", installs: 15230, gradient: g("#b794f6", "#6b21a8"), featured: true },
-  { id: "m-5", name: "Signal", category: "Support", tagline: "Zero-touch triage for Intercom & Zendesk.", installs: 6120, gradient: g("#a855f7", "#7e22ce") },
-  { id: "m-6", name: "Ledger", category: "Operations", tagline: "Watches cloud spend, pings before it hurts.", installs: 4310, gradient: g("#a78bfa", "#5b21b6") },
-  { id: "m-7", name: "Chorus", category: "Marketing", tagline: "Repackages one post into ten channels.", installs: 8940, gradient: g("#d8b4fe", "#a855f7") },
-  { id: "m-8", name: "Anvil", category: "Development", tagline: "Refactors legacy modules with tests attached.", installs: 5620, gradient: g("#c4b5fd", "#7c3aed") },
-  { id: "m-9", name: "Beacon II", category: "Operations", tagline: "SLO watcher with narrative alerting.", installs: 3810, gradient: g("#a78bfa", "#5b21b6") },
-  { id: "m-10", name: "Verse", category: "Marketing", tagline: "Writes changelog emails your users read.", installs: 7120, gradient: g("#c084fc", "#9333ea") },
-  { id: "m-11", name: "Cypher", category: "Research", tagline: "Reads earnings calls, hands you the delta.", installs: 4210, gradient: g("#a78bfa", "#7c3aed") },
-  { id: "m-12", name: "Relay", category: "Support", tagline: "Escalates only what a human needs to see.", installs: 3320, gradient: g("#a855f7", "#7e22ce") },
+  { id: "m-1", name: "Lena Park", category: "Research", tagline: "Deep-research any topic with cited sources.", installs: 12800, gradient: g("#a78bfa", "#7c3aed"), featured: true },
+  { id: "m-2", name: "Julian Cruz", category: "Marketing", tagline: "Turns product changes into launch copy.", installs: 9410, gradient: g("#c084fc", "#9333ea") },
+  { id: "m-3", name: "Zara Malik", category: "Sales", tagline: "Personalized outbound at 40 accounts/day.", installs: 7620, gradient: g("#8b5cf6", "#6d28d9") },
+  { id: "m-4", name: "Theo Rasmussen", category: "Development", tagline: "Reads PRs and writes changelogs you'd ship.", installs: 15230, gradient: g("#b794f6", "#6b21a8"), featured: true },
+  { id: "m-5", name: "Isla Fernández", category: "Support", tagline: "Zero-touch triage for Intercom & Zendesk.", installs: 6120, gradient: g("#a855f7", "#7e22ce") },
+  { id: "m-6", name: "Kwame Boateng", category: "Operations", tagline: "Watches cloud spend, pings before it hurts.", installs: 4310, gradient: g("#a78bfa", "#5b21b6") },
+  { id: "m-7", name: "Sana Yoshida", category: "Marketing", tagline: "Repackages one post into ten channels.", installs: 8940, gradient: g("#d8b4fe", "#a855f7") },
+  { id: "m-8", name: "Mateo Bianchi", category: "Development", tagline: "Refactors legacy modules with tests attached.", installs: 5620, gradient: g("#c4b5fd", "#7c3aed") },
+  { id: "m-9", name: "Freya Lindberg", category: "Operations", tagline: "SLO watcher with narrative alerting.", installs: 3810, gradient: g("#a78bfa", "#5b21b6") },
+  { id: "m-10", name: "Rohan Desai", category: "Marketing", tagline: "Writes changelog emails your users read.", installs: 7120, gradient: g("#c084fc", "#9333ea") },
+  { id: "m-11", name: "Camille Dupont", category: "Research", tagline: "Reads earnings calls, hands you the delta.", installs: 4210, gradient: g("#a78bfa", "#7c3aed") },
+  { id: "m-12", name: "Yusuf Kaya", category: "Support", tagline: "Escalates only what a human needs to see.", installs: 3320, gradient: g("#a855f7", "#7e22ce") },
 ];
 
 export const SEED_KNOWLEDGE: KnowledgeSource[] = [
@@ -309,12 +309,12 @@ export const SEED_KNOWLEDGE: KnowledgeSource[] = [
 
 // Initial activity feed (loaded once; live simulator appends more)
 export const SEED_ACTIVITY: ActivityEvent[] = [
-  { id: "a-1", ts: -12_000, agentId: "research-01", agentName: "Atlas", kind: "reasoning", message: "Cross-referencing today's competitive pull" },
-  { id: "a-2", ts: -28_000, agentId: "seo-01", agentName: "Lumen", kind: "started", message: "Started outline for 'agent orchestration' cluster" },
-  { id: "a-3", ts: -45_000, agentId: "sdr-01", agentName: "Pulse", kind: "waiting", message: "Awaiting HubSpot rate-limit backoff" },
-  { id: "a-4", ts: -60_000, agentId: "codegen-01", agentName: "Forge", kind: "completed", message: "Merged PR #2314 into main" },
-  { id: "a-5", ts: -180_000, agentId: "ops-01", agentName: "Beacon", kind: "tool", message: "Queried Datadog: p99=358ms" },
-  { id: "a-6", ts: -240_000, agentId: "analyst-01", agentName: "Prism", kind: "failed", message: "Snowflake permission error — escalated" },
-  { id: "a-7", ts: -600_000, agentId: "support-01", agentName: "Ember", kind: "completed", message: "Triaged 8 incoming tickets" },
-  { id: "a-8", ts: -1800_000, agentId: "recruiter-01", agentName: "Nova", kind: "completed", message: "Sourced 18 candidates for Staff Frontend" },
+  { id: "a-1", ts: -12_000, agentId: "research-01", agentName: "Aria Chen", kind: "reasoning", message: "Cross-referencing today's competitive pull" },
+  { id: "a-2", ts: -28_000, agentId: "seo-01", agentName: "Marcus Silva", kind: "started", message: "Started outline for 'agent orchestration' cluster" },
+  { id: "a-3", ts: -45_000, agentId: "sdr-01", agentName: "Priya Kapoor", kind: "waiting", message: "Awaiting HubSpot rate-limit backoff" },
+  { id: "a-4", ts: -60_000, agentId: "codegen-01", agentName: "Amara Okafor", kind: "completed", message: "Merged PR #2314 into main" },
+  { id: "a-5", ts: -180_000, agentId: "ops-01", agentName: "Kenji Watanabe", kind: "tool", message: "Queried Datadog: p99=358ms" },
+  { id: "a-6", ts: -240_000, agentId: "analyst-01", agentName: "Diego Herrera", kind: "failed", message: "Snowflake permission error — escalated" },
+  { id: "a-7", ts: -600_000, agentId: "support-01", agentName: "Elena Rossi", kind: "completed", message: "Triaged 8 incoming tickets" },
+  { id: "a-8", ts: -1800_000, agentId: "recruiter-01", agentName: "Noor Al-Amin", kind: "completed", message: "Sourced 18 candidates for Staff Frontend" },
 ];

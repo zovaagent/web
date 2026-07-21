@@ -44,7 +44,10 @@ export function DashboardTopbar() {
   const crumb = useCrumb();
 
   return (
-    <header className="sticky top-0 z-30 flex h-14 shrink-0 items-center gap-3 border-b border-white/[0.06] bg-[#050505]/70 px-4 backdrop-blur-xl md:px-6">
+    <header
+      className="sticky z-30 flex h-14 shrink-0 items-center gap-3 border-b border-white/[0.06] bg-[#050505]/70 px-4 backdrop-blur-xl md:px-6"
+      style={{ top: "var(--concept-banner-h, 0px)" }}
+    >
       <SidebarTrigger className="text-white/60 hover:text-white lg:hidden" />
 
       <div className="flex min-w-0 items-center gap-2 text-[13px]">

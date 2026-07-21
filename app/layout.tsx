@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist_Mono, Manrope, Michroma } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { ConceptBanner } from "@/components/dashboard/shell/concept-banner";
 
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -37,7 +38,11 @@ export default function RootLayout({
         michroma.variable
       )}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body
+        className="min-h-full flex flex-col bg-background text-foreground"
+        style={{ paddingTop: "var(--concept-banner-h, 0px)" }}
+      >
+        <ConceptBanner />
         {children}
       </body>
     </html>

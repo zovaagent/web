@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { useAgentsStore } from "@/stores/dashboard/agents-store";
 import { StatusBadge } from "@/components/dashboard/agents/status-badge";
+import { AgentAvatar } from "@/components/dashboard/common/agent-avatar";
 import {
   ObjectivePanel,
   StatusPanel,
@@ -49,14 +50,7 @@ export default function AgentDetailPage({
         </Link>
         <div className="flex flex-wrap items-start justify-between gap-6">
           <div className="flex items-center gap-4">
-            <span
-              className="flex size-16 items-center justify-center rounded-2xl text-[22px] font-semibold text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15),0_20px_50px_-15px_rgba(139,92,246,0.55)]"
-              style={{
-                background: `linear-gradient(135deg, ${agent.gradient[0]}, ${agent.gradient[1]})`,
-              }}
-            >
-              {agent.name.slice(0, 1)}
-            </span>
+            <AgentAvatar seed={agent.name} gradient={agent.gradient} size={64} rounded="2xl" />
             <div className="space-y-1.5">
               <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#a78bfa]">
                 {agent.category}

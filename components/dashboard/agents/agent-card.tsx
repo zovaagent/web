@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { GlowCard } from "@/components/dashboard/common/glow-card";
+import { AgentAvatar } from "@/components/dashboard/common/agent-avatar";
 import { StatusBadge } from "./status-badge";
 import type { Agent } from "@/lib/dashboard/types";
 import { formatRelative } from "@/lib/dashboard/format";
@@ -18,14 +19,7 @@ export function AgentCard({ agent, index = 0 }: { agent: Agent; index?: number }
       <GlowCard interactive className="group relative flex h-full flex-col gap-5 p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-3">
-            <span
-              className="flex size-11 items-center justify-center rounded-xl text-[15px] font-semibold text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12),0_10px_30px_-10px_rgba(139,92,246,0.55)]"
-              style={{
-                background: `linear-gradient(135deg, ${agent.gradient[0]}, ${agent.gradient[1]})`,
-              }}
-            >
-              {agent.name.slice(0, 1)}
-            </span>
+            <AgentAvatar seed={agent.name} gradient={agent.gradient} size={44} rounded="xl" />
             <div className="flex flex-col leading-tight">
               <span className="text-[15px] font-medium text-white">{agent.name}</span>
               <span className="text-[12px] text-white/45">{agent.role}</span>
