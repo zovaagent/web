@@ -25,6 +25,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { ZovaLogo } from "@/components/landing/zova-logo";
 import { cn } from "@/lib/utils";
 
 type NavItem = {
@@ -52,8 +53,8 @@ const NAV_UTILITY: NavItem[] = [
 
 function ZovaMark() {
   return (
-    <span className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#a78bfa] to-[#6d28d9] shadow-[0_0_0_1px_rgba(167,139,250,0.4),0_10px_30px_-8px_rgba(139,92,246,0.6)]">
-      <span className="text-[13px] font-semibold tracking-tight text-white">Z</span>
+    <span className="relative flex h-8 w-8 items-center justify-center rounded-lg">
+      <ZovaLogo variant="dark" size={28} />
     </span>
   );
 }
