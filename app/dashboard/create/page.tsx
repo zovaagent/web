@@ -80,14 +80,13 @@ export default function CreateAgentPage() {
               <div className="absolute -inset-3 rounded-3xl bg-[radial-gradient(closest-side,rgba(139,92,246,0.35),transparent)] blur-xl" />
               <AgentAvatar
                 seed={name}
-                role="agent"
                 size={180}
                 rounded="2xl"
                 className="relative"
               />
             </div>
             <p className="text-[12px] text-white/40 text-center max-w-xs">
-              Portrait is generated automatically using AI based on the agent name.
+              AI portrait will be generated when the agent is created.
             </p>
           </div>
         </GlowCard>
