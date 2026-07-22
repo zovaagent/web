@@ -7,6 +7,7 @@ import { QuickActionBar } from "@/components/dashboard/mission-control/quick-act
 import { GlowCard } from "@/components/dashboard/common/glow-card";
 import { SectionHeader } from "@/components/dashboard/common/section-header";
 import { AgentAvatar } from "@/components/dashboard/common/agent-avatar";
+import { pollinationsUrl } from "@/lib/dashboard/agent-portrait";
 
 const TEMPLATES = [
   { id: "research", name: "Research Analyst", icon: Search, description: "Continuously monitor a topic, deliver weekly synthesis.", gradient: "from-[#a78bfa] to-[#7c3aed]" },
@@ -80,13 +81,14 @@ export default function CreateAgentPage() {
               <div className="absolute -inset-3 rounded-3xl bg-[radial-gradient(closest-side,rgba(139,92,246,0.35),transparent)] blur-xl" />
               <AgentAvatar
                 seed={name}
+                imageUrl={pollinationsUrl(name)}
                 size={180}
                 rounded="2xl"
                 className="relative"
               />
             </div>
             <p className="text-[12px] text-white/40 text-center max-w-xs">
-              AI portrait will be generated when the agent is created.
+              AI portrait generated based on the agent name.
             </p>
           </div>
         </GlowCard>
