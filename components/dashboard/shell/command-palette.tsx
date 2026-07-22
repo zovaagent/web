@@ -87,7 +87,7 @@ export function CommandPalette() {
               value={`agent ${a.name} ${a.role}`}
               onSelect={() => go(`/dashboard/agents/${a.id}`)}
             >
-              <AgentAvatar seed={a.name} gradient={a.gradient} size={24} rounded="md" />
+              <AgentAvatar seed={a.name} role={a.role} gradient={a.gradient} size={24} rounded="md" />
               <div className="flex flex-col">
                 <span className="text-[13px]">{a.name}</span>
                 <span className="text-[11px] text-white/45">{a.role}</span>

@@ -50,7 +50,7 @@ export default function AgentDetailPage({
         </Link>
         <div className="flex flex-wrap items-start justify-between gap-6">
           <div className="flex items-center gap-4">
-            <AgentAvatar seed={agent.name} gradient={agent.gradient} size={64} rounded="2xl" />
+            <AgentAvatar seed={agent.name} role={agent.role} gradient={agent.gradient} size={64} rounded="2xl" />
             <div className="space-y-1.5">
               <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#a78bfa]">
                 {agent.category}

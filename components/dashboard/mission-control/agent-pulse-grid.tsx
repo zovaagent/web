@@ -35,7 +35,7 @@ export function AgentPulseGrid() {
               href={`/dashboard/agents/${a.id}`}
               className="group flex items-center gap-3 rounded-lg px-2 py-2.5 transition-colors hover:bg-white/[0.03]"
             >
-              <AgentAvatar seed={a.name} gradient={a.gradient} size={32} rounded="lg" />
+              <AgentAvatar seed={a.name} role={a.role} gradient={a.gradient} size={32} rounded="lg" />
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline justify-between gap-2">
                   <span className="truncate text-[13px] font-medium text-white">

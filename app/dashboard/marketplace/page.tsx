@@ -74,7 +74,7 @@ export default function MarketplacePage() {
                 </span>
               )}
               <div className="flex items-center gap-3">
-                <AgentAvatar seed={m.name} gradient={m.gradient} size={44} rounded="xl" />
+                <AgentAvatar seed={m.name} role={m.category} gradient={m.gradient} size={44} rounded="xl" />
                 <div>
                   <div className="text-[15px] font-medium text-white">{m.name}</div>
                   <div className="text-[11px] uppercase tracking-widest text-white/40">{m.category}</div>
