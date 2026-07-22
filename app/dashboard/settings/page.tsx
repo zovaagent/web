@@ -42,7 +42,7 @@ function WorkspaceTab() {
     <GlowCard className="p-6">
       <Row label="Workspace name" hint="Displayed at the top-left, and in agent transcripts."><Input defaultValue="ZOVA · Product" /></Row>
       <Row label="Workspace URL" hint="Used for shareable links."><Input defaultValue="zova.ai/w/product" /></Row>
-      <Row label="Timezone" hint="All timestamps rendered in this timezone."><Input defaultValue="Asia/Jakarta" /></Row>
+      <Row label="Timezone" hint="All timestamps rendered in this timezone."><Input defaultValue="America/New_York" /></Row>
     </GlowCard>
   );
 }

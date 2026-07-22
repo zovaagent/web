@@ -6,8 +6,7 @@ import { Bot, MessageSquare, Search, ShoppingCart, TrendingUp, Wrench } from "lu
 import { QuickActionBar } from "@/components/dashboard/mission-control/quick-action-bar";
 import { GlowCard } from "@/components/dashboard/common/glow-card";
 import { SectionHeader } from "@/components/dashboard/common/section-header";
-import { AvatarCustomizer } from "@/components/dashboard/create/avatar-customizer";
-import type { AvatarLook } from "@/lib/dashboard/avatar";
+import { AgentAvatar } from "@/components/dashboard/common/agent-avatar";
 
 const TEMPLATES = [
   { id: "research", name: "Research Analyst", icon: Search, description: "Continuously monitor a topic, deliver weekly synthesis.", gradient: "from-[#a78bfa] to-[#7c3aed]" },
@@ -20,7 +19,6 @@ const TEMPLATES = [
 
 export default function CreateAgentPage() {
   const [name, setName] = useState("New Agent");
-  const [look, setLook] = useState<AvatarLook | undefined>(undefined);
 
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-4 py-16 md:px-8 md:py-20">
@@ -77,12 +75,21 @@ export default function CreateAgentPage() {
             />
           </div>
 
-          <AvatarCustomizer
-            seed={name}
-            gradient={["8b5cf6", "6d28d9"]}
-            value={look}
-            onChange={setLook}
-          />
+          <div className="flex flex-col items-center gap-4">
+            <div className="relative">
+              <div className="absolute -inset-3 rounded-3xl bg-[radial-gradient(closest-side,rgba(139,92,246,0.35),transparent)] blur-xl" />
+              <AgentAvatar
+                seed={name}
+                role="agent"
+                size={180}
+                rounded="2xl"
+                className="relative"
+              />
+            </div>
+            <p className="text-[12px] text-white/40 text-center max-w-xs">
+              Portrait is generated automatically using AI based on the agent name.
+            </p>
+          </div>
         </GlowCard>
       </motion.div>
 

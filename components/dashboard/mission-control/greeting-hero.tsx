@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { PulseDot } from "@/components/dashboard/common/pulse-dot";
 import { useAgentsStore } from "@/stores/dashboard/agents-store";
+import { getHoursInTimezone } from "@/lib/dashboard/format";
 
 function greetingFor(hour: number) {
   if (hour < 5) return "Good night";
@@ -23,7 +24,7 @@ export function GreetingHero() {
   );
 
   useEffect(() => {
-    setGreeting(greetingFor(new Date().getHours()));
+    setGreeting(greetingFor(getHoursInTimezone()));
   }, []);
 
   const status =

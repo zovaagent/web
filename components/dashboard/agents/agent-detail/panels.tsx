@@ -15,7 +15,7 @@ import {
 import { GlowCard } from "@/components/dashboard/common/glow-card";
 import { StatusBadge } from "@/components/dashboard/agents/status-badge";
 import { useTypewriter } from "@/hooks/dashboard/use-typewriter";
-import { formatDuration, formatNumber, formatRelative } from "@/lib/dashboard/format";
+import { formatDuration, formatNumber, formatRelative, formatTimeInTimezone } from "@/lib/dashboard/format";
 import type { Agent, LogLevel } from "@/lib/dashboard/types";
 import { cn } from "@/lib/utils";
 
@@ -225,10 +225,6 @@ const LOG_LEVEL_STYLES: Record<LogLevel, string> = {
   error: "text-rose-300/90",
 };
 
-function pad(n: number) {
-  return n.toString().padStart(2, "0");
-}
-
 export function LogsPanel({ agent }: { agent: Agent }) {
   const lines = useMemo(() => agent.logs.slice(-30), [agent.logs]);
   return (
@@ -245,8 +241,7 @@ export function LogsPanel({ agent }: { agent: Agent }) {
         </div>
         <div className="max-h-[420px] overflow-y-auto px-5 py-3 font-mono text-[12.5px] leading-relaxed">
           {lines.map((l) => {
-            const d = new Date(l.ts);
-            const time = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+            const time = formatTimeInTimezone(l.ts);
             return (
               <div key={l.id} className="flex gap-3 py-0.5">
                 <span className="shrink-0 text-white/25">[{time}]</span>

@@ -6,6 +6,7 @@ import { GlowCard } from "@/components/dashboard/common/glow-card";
 import { PulseDot } from "@/components/dashboard/common/pulse-dot";
 import { useFeedStore } from "@/stores/dashboard/feed-store";
 import type { ActivityEvent } from "@/lib/dashboard/types";
+import { formatTimeInTimezone } from "@/lib/dashboard/format";
 import { cn } from "@/lib/utils";
 
 const KIND_COLOR: Record<ActivityEvent["kind"], string> = {
@@ -16,14 +17,6 @@ const KIND_COLOR: Record<ActivityEvent["kind"], string> = {
   waiting: "text-amber-200",
   failed: "text-rose-300",
 };
-
-function pad(n: number) {
-  return n.toString().padStart(2, "0");
-}
-function formatTime(ts: number) {
-  const d = new Date(ts);
-  return `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-}
 
 export function LiveActivityFeed() {
   const events = useFeedStore((s) => s.events);
@@ -95,7 +88,7 @@ export function LiveActivityFeed() {
                 transition={{ duration: 0.18, ease: "easeOut" }}
                 className="flex gap-3 py-0.5"
               >
-                <span className="shrink-0 text-white/30">[{formatTime(e.ts)}]</span>
+                <span className="shrink-0 text-white/30">[{formatTimeInTimezone(e.ts)}]</span>
                 <span className="shrink-0 font-medium text-white/75">
                   {e.agentName}
                 </span>

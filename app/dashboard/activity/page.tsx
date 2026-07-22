@@ -7,7 +7,7 @@ import { GlowCard } from "@/components/dashboard/common/glow-card";
 import { useFeedStore } from "@/stores/dashboard/feed-store";
 import { useAgentsStore } from "@/stores/dashboard/agents-store";
 import type { ActivityEvent } from "@/lib/dashboard/types";
-import { formatRelative } from "@/lib/dashboard/format";
+import { formatRelative, formatDateInTimezone, formatDateLabelInTimezone } from "@/lib/dashboard/format";
 import { cn } from "@/lib/utils";
 
 const KIND_COLOR: Record<ActivityEvent["kind"], string> = {
@@ -28,20 +28,6 @@ const KIND_LABEL: Record<ActivityEvent["kind"], string> = {
   failed: "Failed",
 };
 
-function dayKey(ts: number) {
-  const d = new Date(ts);
-  return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
-}
-function dayLabel(ts: number) {
-  const d = new Date(ts);
-  const today = new Date();
-  const y = new Date();
-  y.setDate(today.getDate() - 1);
-  if (dayKey(ts) === dayKey(today.getTime())) return "Today";
-  if (dayKey(ts) === dayKey(y.getTime())) return "Yesterday";
-  return d.toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric" });
-}
-
 export default function ActivityPage() {
   const events = useFeedStore((s) => s.events);
   const agents = useAgentsStore((s) => s.agents);
@@ -59,7 +45,7 @@ export default function ActivityPage() {
   const grouped = useMemo(() => {
     const map = new Map<string, ActivityEvent[]>();
     for (const e of filtered) {
-      const k = dayKey(e.ts);
+      const k = formatDateInTimezone(e.ts);
       if (!map.has(k)) map.set(k, []);
       map.get(k)!.push(e);
     }
@@ -130,7 +116,7 @@ export default function ActivityPage() {
         {grouped.map(([k, items]) => (
           <div key={k} className="flex flex-col gap-3">
             <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-white/40">
-              <span>{dayLabel(items[0].ts)}</span>
+              <span>{formatDateLabelInTimezone(items[0].ts)}</span>
               <span className="h-px flex-1 bg-white/[0.06]" />
               <span className="font-mono text-white/40">{items.length}</span>
             </div>
