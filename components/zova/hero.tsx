@@ -1,8 +1,10 @@
 "use client";
 
-import { Sparkles } from "lucide-react";
+import { Sparkles, Copy, Check } from "lucide-react";
 import { useState } from "react";
 import { InteractiveHeroCreator } from "./interactive-hero-creator";
+
+const CONTACT_ADDRESS = "2XkT8ScYvKnD7d2RT9Bx7zdobT9FnrHfBC4PcgVgpump";
 
 interface HeroProps {
   onSubmitPrompt: (prompt: string) => void;
@@ -19,6 +21,14 @@ export function Hero({ onSubmitPrompt }: HeroProps) {
   const scrollToMarketplace = () => {
     const el = document.getElementById("agent-marketplace");
     if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const [copied, setCopied] = useState(false);
+
+  const copyAddress = async () => {
+    await navigator.clipboard.writeText(CONTACT_ADDRESS);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -64,6 +74,13 @@ export function Hero({ onSubmitPrompt }: HeroProps) {
               className="px-8 py-4 bg-white/[0.04] border border-white/10 hover:bg-white/10 hover:border-violet-500/40 text-white font-medium rounded-sm transition-all duration-300 cursor-pointer text-sm hover:-translate-y-0.5"
             >
               Explore Marketplace
+            </button>
+            <button
+              onClick={copyAddress}
+              className="flex items-center gap-2 px-6 py-4 bg-white/[0.04] border border-white/10 hover:bg-white/10 hover:border-cyan-500/40 text-white/70 hover:text-white font-medium rounded-sm transition-all duration-300 cursor-pointer text-xs hover:-translate-y-0.5"
+            >
+              {copied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
+              {copied ? "Copied!" : "Copy Contact Address"}
             </button>
           </div>
 

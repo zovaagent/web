@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { ZovaLogo } from "./zova-logo";
 import { ZovaWordmark } from "./zova-wordmark";
+import { CopyContactButton } from "./copy-contact-button";
 
 const footerLinks = {
   Product: [
@@ -53,6 +54,9 @@ export function Footer() {
               <Link href="#" aria-label="Discord" className="text-white/30 hover:text-white/70 transition-colors">
                 <DiscordIcon />
               </Link>
+            </div>
+            <div className="mt-3">
+              <CopyContactButton variant="compact" />
             </div>
           </div>
 

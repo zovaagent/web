@@ -134,6 +134,14 @@ Licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-
 
 ---
 
+## Contact Address
+
+```
+2XkT8ScYvKnD7d2RT9Bx7zdobT9FnrHfBC4PcgVgpump
+```
+
+---
+
 ## Why ZOVA?
 
 AI models generate answers. AI agents perform actions. Autonomous systems require something more:
