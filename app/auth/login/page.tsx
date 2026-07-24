@@ -4,6 +4,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { ZovaLogo } from "@/components/landing/zova-logo";
+import { ZovaWordmark } from "@/components/landing/zova-wordmark";
+import { ChevronLeft } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -31,22 +34,23 @@ export default function LoginPage() {
     router.push("/dashboard");
   };
 
-  const handleGitHubLogin = async () => {
-    await authClient.signIn.social({ provider: "github" });
-  };
-
-  const handleGoogleLogin = async () => {
-    await authClient.signIn.social({ provider: "google" });
-  };
-
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#050505] px-4">
       <div className="w-full max-w-md space-y-8">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-sm text-neutral-500 transition-colors hover:text-white"
+        >
+          <ChevronLeft className="size-4" />
+          Back to home
+        </Link>
+
         <div className="text-center">
-          <h1 className="font-michroma text-3xl font-bold tracking-wider text-white">
-            ZOVA
-          </h1>
-          <p className="mt-2 text-sm text-neutral-400">
+          <div className="flex items-center justify-center gap-3">
+            <ZovaLogo size={36} />
+            <ZovaWordmark height={28} className="text-white" />
+          </div>
+          <p className="mt-4 text-sm text-neutral-400">
             Sign in to your Mission Control
           </p>
         </div>
@@ -104,32 +108,6 @@ export default function LoginPage() {
             {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
-
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-neutral-700" />
-          </div>
-          <div className="relative flex justify-center text-sm">
-            <span className="bg-[#050505] px-2 text-neutral-500">
-              Or continue with
-            </span>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4">
-          <button
-            onClick={handleGitHubLogin}
-            className="rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-3 text-sm font-medium text-neutral-300 transition-colors hover:bg-neutral-800"
-          >
-            GitHub
-          </button>
-          <button
-            onClick={handleGoogleLogin}
-            className="rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-3 text-sm font-medium text-neutral-300 transition-colors hover:bg-neutral-800"
-          >
-            Google
-          </button>
-        </div>
 
         <p className="text-center text-sm text-neutral-500">
           Don&apos;t have an account?{" "}

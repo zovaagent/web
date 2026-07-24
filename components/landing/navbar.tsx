@@ -56,13 +56,13 @@ export function Navbar() {
           </div>
 
           <div className="hidden items-center gap-4 lg:flex">
-            <Link href="#interactive-agent-generator"
+            <Link href="/auth/login"
               className={`${linkText} text-white/60 transition-colors hover:text-white`}
             >
               Sign In
             </Link>
 
-            <Link href="#interactive-agent-generator"
+            <Link href="/auth/register"
               className={`${linkText} border border-transparent bg-[#6d4dff]/15 px-4 py-2 text-[#a78bfa] transition-colors hover:bg-[#6d4dff]/25 hover:text-white inline-flex items-center gap-1.5`}
             >
               Create Agent
@@ -95,7 +95,7 @@ export function Navbar() {
                   ))}
                 </nav>
                 <div className="border-t border-white/10 p-4">
-                  <Link href="#interactive-agent-generator" onClick={() => setOpen(false)}
+                  <Link href="/auth/register" onClick={() => setOpen(false)}
                     className={`${linkText} inline-flex w-full items-center justify-center gap-1.5 rounded-none bg-[#6d4dff]/15 px-4 py-2.5 text-center text-[#a78bfa] hover:bg-[#6d4dff]/25 hover:text-white`}
                   >
                     Create Agent
