@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/components/dashboard/common/section-header";
 import { GlowCard } from "@/components/dashboard/common/glow-card";
@@ -9,6 +9,7 @@ import { useAgentsStore } from "@/stores/dashboard/agents-store";
 import type { ActivityEvent } from "@/lib/dashboard/types";
 import { formatRelative, formatDateInTimezone, formatDateLabelInTimezone } from "@/lib/dashboard/format";
 import { cn } from "@/lib/utils";
+import { Loader2 } from "lucide-react";
 
 const KIND_COLOR: Record<ActivityEvent["kind"], string> = {
   started: "bg-[#a78bfa]",
@@ -29,10 +30,15 @@ const KIND_LABEL: Record<ActivityEvent["kind"], string> = {
 };
 
 export default function ActivityPage() {
-  const events = useFeedStore((s) => s.events);
-  const agents = useAgentsStore((s) => s.agents);
+  const { events, fetchActivity, loading } = useFeedStore();
+  const { agents, fetchAgents } = useAgentsStore();
   const [agentFilter, setAgentFilter] = useState<string>("all");
   const [kindFilter, setKindFilter] = useState<ActivityEvent["kind"] | "all">("all");
+
+  useEffect(() => {
+    fetchActivity();
+    fetchAgents();
+  }, [fetchActivity, fetchAgents]);
 
   const filtered = useMemo(() => {
     return events
@@ -113,7 +119,11 @@ export default function ActivityPage() {
       </div>
 
       <div className="flex flex-col gap-8">
-        {grouped.map(([k, items]) => (
+        {loading ? (
+          <div className="flex items-center justify-center py-12">
+            <Loader2 className="size-6 animate-spin text-purple-400" />
+          </div>
+        ) : grouped.map(([k, items]) => (
           <div key={k} className="flex flex-col gap-3">
             <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-white/40">
               <span>{formatDateLabelInTimezone(items[0].ts)}</span>

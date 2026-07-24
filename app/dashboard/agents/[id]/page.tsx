@@ -1,9 +1,8 @@
 "use client";
 
-import { use } from "react";
+import { use, useEffect, useState } from "react";
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Loader2 } from "lucide-react";
 import { useAgentsStore } from "@/stores/dashboard/agents-store";
 import { StatusBadge } from "@/components/dashboard/agents/status-badge";
 import { AgentAvatar } from "@/components/dashboard/common/agent-avatar";
@@ -17,6 +16,7 @@ import {
   ExecutionHistoryPanel,
   LogsPanel,
 } from "@/components/dashboard/agents/agent-detail/panels";
+import type { Agent } from "@/lib/dashboard/types";
 
 const RAIL = [
   { id: "objective", label: "Objective" },
@@ -35,8 +35,41 @@ export default function AgentDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = use(params);
-  const agent = useAgentsStore((s) => s.agents.find((a) => a.id === id));
-  if (!agent) return notFound();
+  const { fetchAgentById } = useAgentsStore();
+  const [agent, setAgent] = useState<Agent | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadAgent = async () => {
+      setLoading(true);
+      const data = await fetchAgentById(id);
+      setAgent(data);
+      setLoading(false);
+    };
+    loadAgent();
+  }, [id, fetchAgentById]);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <Loader2 className="size-8 animate-spin text-purple-400" />
+      </div>
+    );
+  }
+
+  if (!agent) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20 gap-4">
+        <p className="text-white/50">Agent not found</p>
+        <Link
+          href="/dashboard/agents"
+          className="text-sm text-purple-400 hover:text-purple-300"
+        >
+          Back to agents
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-8 md:px-8 md:py-12">

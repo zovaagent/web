@@ -1,149 +1,239 @@
 import { NextResponse } from "next/server";
-import type { Agent } from "@/components/zova/types";
+import { getSession } from "@/lib/auth-utils";
+import { db } from "@/lib/db";
+import { agents, agentTools, agentMemory } from "@/lib/db/schema";
+import { llm, getModelForAgent } from "@/lib/llm/client";
 
 export const runtime = "nodejs";
 
-function compileFallbackAgent(prompt: string): Agent {
+interface CreateAgentRequest {
+  prompt: string;
+  name?: string;
+  role?: string;
+  category?: string;
+  tools?: string[];
+}
+
+async function compileAgentWithLLM(prompt: string) {
+  const model = getModelForAgent("research");
+
+  const systemPrompt = `You are an AI agent architect. Given a user's objective, create a detailed agent configuration.
+
+Return ONLY a valid JSON object with these fields:
+{
+  "name": "Agent Name (human-like, 2 words)",
+  "role": "Agent Role (e.g., Research Analyst, SEO Writer)",
+  "category": "One of: Research, Marketing, Sales, Development, Support, Operations",
+  "objective": "Detailed objective statement (1-2 sentences)",
+  "tools": ["tool1", "tool2", "tool3"],
+  "knowledge": ["knowledge1", "knowledge2"],
+  "memory": [["key", "value"], ["key2", "value2"]],
+  "reasoning": "Initial reasoning about how to approach the objective"
+}
+
+Be creative but practical. The agent should be capable of autonomous operation.`;
+
+  try {
+    const response = await llm.chat.completions.create({
+      model,
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: `Create an agent for: ${prompt}` },
+      ],
+      temperature: 0.7,
+      max_tokens: 1024,
+    });
+
+    const content = response.choices[0]?.message?.content || "";
+    // Try to extract JSON from the response
+    const jsonMatch = content.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      return JSON.parse(jsonMatch[0]);
+    }
+  } catch (error) {
+    console.error("LLM compilation failed, using fallback:", error);
+  }
+
+  return null;
+}
+
+function compileFallbackAgent(prompt: string) {
   const normalized = prompt.toLowerCase();
 
   let name = "Z-Agent";
-  let category: Agent["category"] = "Operations";
-  let tagline = "Autonomous general task workflow optimizer.";
-  let description =
-    "An intelligent virtual workforce agent pre-trained to parse instructions, establish secure connections, and operate on your behalf.";
-  let tools = ["Web Browser Agent", "Notification Hook", "API Compiler"];
-  let knowledge = ["ZOVA General Vector DB", "Standard Docs"];
-  let workflow = [
-    "Identify task constraints and context",
-    "Gather web and internal references",
-    "Synthesize logical solution routes",
-    "Execute action pipeline and report results",
-  ];
-  let simulatedLogs = [
-    "[10:00:00] Initialized ZOVA Virtual Agent Core.",
-    "[10:00:03] Syncing target environment credentials...",
-    "[10:00:05] Context synthesis active: Processing input payload.",
-    "[10:00:08] Objective parsed successfully. Entering standby loop.",
-    "[10:00:12] Monitoring channel for inbound request triggers...",
-  ];
+  let role = "General Assistant";
+  let category = "Operations";
+  let objective = "Autonomous general task workflow optimizer.";
+  let tools = ["Web Search", "Notifications", "API Compiler"];
+  let knowledge = ["General Knowledge Base"];
+  let memory: [string, string][] = [["task_type", "general"]];
 
   if (/(wallet|portfolio|market|finance)/.test(normalized)) {
-    name = "AssetWatch-Alpha";
-    category = "Finance";
-    tagline = "Autonomous portfolio guardian and market volatility analyzer.";
-    description =
-      "Continuous monitoring agent designed to scan, analyze, and flag significant changes or anomalies across active portfolios and asset feeds.";
-    tools = ["Live Volatility Engine", "Security Feed Webhook", "Alert Gateway"];
-    knowledge = ["Portfolio Settings DB", "Live Asset Metrics Feed"];
-    workflow = [
-      "Continuously poll active portfolios and asset feeds",
-      "Evaluate statistical variance against baseline metrics",
-      "Compile comprehensive risk and performance profiles",
-      "Dispatch real-time emergency notifications via designated channels",
-    ];
-    simulatedLogs = [
-      "[11:15:30] AssetWatch Core activated on secure port.",
-      "[11:15:32] Synced successfully with portfolio data source.",
-      "[11:15:35] Analyzing 24h delta across asset parameters...",
-      "[11:15:38] Detected baseline fluctuation of 1.2% (within safe threshold).",
-      "[11:15:42] Listening for volatility spikes...",
-    ];
-  } else if (/(research|analyze|news|feed)/.test(normalized)) {
-    name = "NexusResearch";
+    name = "AssetWatch Alpha";
+    role = "Financial Analyst";
     category = "Research";
-    tagline = "Self-directed qualitative synthesizer and market analyst.";
-    description =
-      "An agent specializing in continuous information gathering, factual synthesis, and professional dossier compilation on selected target topics.";
-    tools = ["Multimodal Reader API", "Factual Synthesizer Engine", "Markdown Publisher"];
-    knowledge = ["Academic Vector Repositories", "Global News API"];
-    workflow = [
-      "Inhale search terms and target news feeds",
-      "Verify source credibility and cross-reference claims",
-      "Formulate concise summaries and narrative outlines",
-      "Publish structured digests to your documentation repository",
-    ];
-    simulatedLogs = [
-      "[14:22:00] NexusResearch spawning search spiders.",
-      "[14:22:05] Querying public databases for target trends...",
-      "[14:22:12] Retrieved 14 relevant articles. Starting synthesis...",
-      "[14:22:18] Formulating outline: Eliminating duplicates and redundant claims.",
-      "[14:22:25] Ready: Research digest compiled.",
-    ];
+    objective = "Monitor portfolios and analyze market volatility.";
+    tools = ["Market Data API", "Portfolio Tracker", "Alert System"];
+    knowledge = ["Financial Markets", "Portfolio Strategy"];
+    memory = [["focus", "portfolio monitoring"], ["alert_threshold", "5%"]];
+  } else if (/(research|analyze|news|feed)/.test(normalized)) {
+    name = "Nexus Research";
+    role = "Research Analyst";
+    category = "Research";
+    objective = "Gather and synthesize information from multiple sources.";
+    tools = ["Web Search", "Document Parser", "Summary Generator"];
+    knowledge = ["Research Methods", "Data Analysis"];
+    memory = [["output_format", "structured reports"]];
   } else if (/(security|risk|protect|threat)/.test(normalized)) {
-    name = "AegisSentinel";
-    category = "Security";
-    tagline = "Proactive vulnerability scanning and threat prevention manager.";
-    description =
-      "High-frequency auditing agent dedicated to continuous behavioral analysis, access control tracking, and critical security audits.";
-    tools = ["Signature Scanning Toolkit", "Identity Auditor Agent", "Auto-isolation Trigger"];
-    knowledge = ["Active Threat Intelligence feed", "Access History Logs"];
-    workflow = [
-      "Monitor event streams for aberrant behavior patterns",
-      "Cross-check system signatures against active zero-day updates",
-      "Calculate localized security threat index scoring",
-      "Trigger instantaneous firewall isolation upon infraction detection",
-    ];
-    simulatedLogs = [
-      "[08:02:10] AegisSentinel running micro-audits on system nodes.",
-      "[08:02:12] Scan complete: No vulnerable ports found.",
-      "[08:02:15] Auditing recent cross-region authentication request...",
-      "[08:02:18] Authentication source confirmed: Secure JWT validated.",
-      "[08:02:22] Sentinel standby. System health at 100%.",
-    ];
+    name = "Aegis Sentinel";
+    role = "Security Analyst";
+    category = "Support";
+    objective = "Monitor for security threats and vulnerabilities.";
+    tools = ["Security Scanner", "Log Analyzer", "Threat Database"];
+    knowledge = ["Security Protocols", "Threat Intelligence"];
+    memory = [["scan_frequency", "hourly"]];
   } else if (/(operations|automate|workflow|slack)/.test(normalized)) {
-    name = "OpusCore";
+    name = "Opus Core";
+    role = "Operations Manager";
     category = "Operations";
-    tagline = "Multi-platform operational glue and pipeline orchestrator.";
-    description =
-      "An orchestrator agent built to link disconnected web tools, parse triggers, and complete complex multi-step workflows without human intervention.";
-    tools = ["Multi-OAuth Router", "Dynamic Payload Parser", "Web Task Compiler"];
-    knowledge = ["Workspace Organization Schemas", "Execution State Store"];
-    workflow = [
-      "Listen to inbound webhooks or time-based triggers",
-      "Extract semantic values and parse required action payload",
-      "Coordinate handshakes across external service integrations",
-      "Record step success and emit execution history dashboard",
-    ];
-    simulatedLogs = [
-      "[16:40:01] OpusCore listening on configured Workspace webhooks.",
-      "[16:40:04] Inbound trigger detected from connected repository.",
-      "[16:40:05] Parsing payload: Identified 3 actionable change events.",
-      "[16:40:08] Relaying action tasks to Slack and Linear channels...",
-      "[16:40:11] Operations workflow successfully finished. Standby.",
-    ];
-  }
-
-  if (prompt.trim().length > 10 && name === "Z-Agent") {
-    const cleanWord =
-      prompt.replace(/[^a-zA-Z0-9 ]/g, "").split(" ").filter((w) => w.length > 3)[0] || "Alpha";
-    name = `${cleanWord.charAt(0).toUpperCase() + cleanWord.slice(1)}Bot-V1`;
-    tagline = `Customized agent for: "${prompt.substring(0, 40)}${prompt.length > 40 ? "..." : ""}"`;
+    objective = "Automate and optimize business workflows.";
+    tools = ["Workflow Engine", "Integration Hub", "Task Scheduler"];
+    knowledge = ["Business Processes", "Automation Patterns"];
+    memory = [["workflow_count", "0"]];
+  } else if (/(seo|content|blog|write|marketing)/.test(normalized)) {
+    name = "Content Forge";
+    role = "Content Strategist";
+    category = "Marketing";
+    objective = "Create and optimize content for search engines.";
+    tools = ["SEO Analyzer", "Content Editor", "Keyword Research"];
+    knowledge = ["SEO Best Practices", "Content Marketing"];
+    memory = [["target_keywords", "[]"]];
+  } else if (/(sales|lead|prospect|outbound)/.test(normalized)) {
+    name = "Pipeline Pro";
+    role = "Sales Development Rep";
+    category = "Sales";
+    objective = "Identify and qualify sales prospects.";
+    tools = ["CRM Integration", "Email Outreach", "Lead Scoring"];
+    knowledge = ["Sales Playbook", "ICP Definition"];
+    memory = [["weekly_target", "40 accounts"]];
+  } else if (/(code|dev|programming|bug|fix)/.test(normalized)) {
+    name = "CodeCraft";
+    role = "Software Engineer";
+    category = "Development";
+    objective = "Write, review, and debug code.";
+    tools = ["Code Editor", "Git", "Testing Framework"];
+    knowledge = ["Coding Standards", "Architecture Patterns"];
+    memory = [["languages", "typescript,python"]];
+  } else if (/(support|help|ticket|customer)/.test(normalized)) {
+    name = "Support Hub";
+    role = "Customer Support Agent";
+    category = "Support";
+    objective = "Handle customer inquiries and resolve issues.";
+    tools = ["Ticketing System", "Knowledge Base", "Chat Interface"];
+    knowledge = ["Support Playbook", "Product Documentation"];
+    memory = [["escalation_threshold", "3 attempts"]];
   }
 
   return {
     name,
-    tagline,
-    description,
+    role,
     category,
-    autonomyLevel: parseFloat((95 + Math.random() * 4.8).toFixed(1)),
+    objective,
     tools,
     knowledge,
-    workflow,
-    simulatedLogs,
+    memory,
+    reasoning: `Agent designed for: ${prompt.substring(0, 100)}`,
   };
 }
 
 export async function POST(req: Request) {
   try {
-    const { prompt } = await req.json();
-    if (!prompt || typeof prompt !== "string") {
-      return NextResponse.json({ error: "Prompt is required and must be a string." }, { status: 400 });
+    const session = await getSession();
+    if (!session?.user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-    // Simulate small latency so the UI compile animation feels real
-    await new Promise((r) => setTimeout(r, 900));
-    const agent = compileFallbackAgent(prompt);
-    return NextResponse.json({ agent, source: "fallback" });
-  } catch {
+
+    const body: CreateAgentRequest = await req.json();
+    const { prompt, name, role, category, tools } = body;
+
+    if (!prompt || typeof prompt !== "string") {
+      return NextResponse.json(
+        { error: "Prompt is required and must be a string." },
+        { status: 400 }
+      );
+    }
+
+    // Try LLM compilation first, fallback to deterministic
+    let agentConfig = await compileAgentWithLLM(prompt);
+    if (!agentConfig) {
+      agentConfig = compileFallbackAgent(prompt);
+    }
+
+    // Override with explicit values
+    if (name) agentConfig.name = name;
+    if (role) agentConfig.role = role;
+    if (category) agentConfig.category = category;
+    if (tools) agentConfig.tools = tools;
+
+    // Save to database
+    const [newAgent] = await db
+      .insert(agents)
+      .values({
+        userId: session.user.id,
+        name: agentConfig.name,
+        role: agentConfig.role,
+        objective: agentConfig.objective,
+        category: agentConfig.category,
+        status: "idle",
+        reasoning: agentConfig.reasoning,
+        gradient: getGradientForCategory(agentConfig.category),
+      })
+      .returning({ id: agents.id });
+
+    // Add tools
+    if (agentConfig.tools && Array.isArray(agentConfig.tools)) {
+      await db.insert(agentTools).values(
+        agentConfig.tools.map((tool: string) => ({
+          agentId: newAgent.id,
+          toolName: tool,
+        }))
+      );
+    }
+
+    // Add memory
+    if (agentConfig.memory && Array.isArray(agentConfig.memory)) {
+      await db.insert(agentMemory).values(
+        agentConfig.memory.map(([key, value]: [string, string]) => ({
+          agentId: newAgent.id,
+          key,
+          value,
+        }))
+      );
+    }
+
+    return NextResponse.json({
+      agent: {
+        id: newAgent.id,
+        ...agentConfig,
+      },
+      source: "database",
+    });
+  } catch (error) {
+    console.error("Agent creation failed:", error);
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
+}
+
+function getGradientForCategory(category: string): [string, string] {
+  const gradients: Record<string, [string, string]> = {
+    Research: ["#a78bfa", "#7c3aed"],
+    Marketing: ["#c084fc", "#9333ea"],
+    Sales: ["#8b5cf6", "#6d28d9"],
+    Development: ["#b794f6", "#6b21a8"],
+    Support: ["#a855f7", "#7e22ce"],
+    Operations: ["#a78bfa", "#5b21b6"],
+    Security: ["#c4b5fd", "#7c3aed"],
+    Finance: ["#d8b4fe", "#a855f7"],
+  };
+  return gradients[category] || ["#a78bfa", "#7c3aed"];
 }

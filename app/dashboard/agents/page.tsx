@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SectionHeader } from "@/components/dashboard/common/section-header";
 import { AgentCard } from "@/components/dashboard/agents/agent-card";
 import { useAgentsStore } from "@/stores/dashboard/agents-store";
 import type { AgentStatus } from "@/lib/dashboard/types";
 import { cn } from "@/lib/utils";
+import { Loader2 } from "lucide-react";
 
 const FILTERS: Array<{ label: string; value: AgentStatus | "all" }> = [
   { label: "All", value: "all" },
@@ -17,8 +18,12 @@ const FILTERS: Array<{ label: string; value: AgentStatus | "all" }> = [
 ];
 
 export default function AgentsPage() {
-  const agents = useAgentsStore((s) => s.agents);
+  const { agents, fetchAgents, loading } = useAgentsStore();
   const [filter, setFilter] = useState<AgentStatus | "all">("all");
+
+  useEffect(() => {
+    fetchAgents();
+  }, [fetchAgents]);
 
   const visible = filter === "all" ? agents : agents.filter((a) => a.status === filter);
 
@@ -55,11 +60,17 @@ export default function AgentsPage() {
         })}
       </div>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {visible.map((a, i) => (
-          <AgentCard key={a.id} agent={a} index={i} />
-        ))}
-      </div>
+      {loading ? (
+        <div className="flex items-center justify-center py-12">
+          <Loader2 className="size-6 animate-spin text-purple-400" />
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {visible.map((a, i) => (
+            <AgentCard key={a.id} agent={a} index={i} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
