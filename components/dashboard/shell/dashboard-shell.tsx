@@ -20,7 +20,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
           "--sidebar-width-icon": "3.5rem",
         } as React.CSSProperties
       }
-      className="dark min-h-svh bg-[#050505] text-white"
+      className="dark min-h-svh bg-background text-foreground"
     >
       <AmbientBackground />
       <DashboardSidebar />

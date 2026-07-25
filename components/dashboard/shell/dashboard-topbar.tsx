@@ -60,21 +60,21 @@ export function DashboardTopbar() {
 
   return (
     <header
-      className="sticky z-30 flex h-14 shrink-0 items-center gap-3 border-b border-white/[0.06] bg-[#050505]/70 px-4 backdrop-blur-xl md:px-6"
+      className="sticky z-30 flex h-14 shrink-0 items-center gap-3 border-b border-border bg-background/70 px-4 backdrop-blur-xl md:px-6"
       style={{ top: "var(--concept-banner-h, 0px)" }}
     >
-      <SidebarTrigger className="text-white/60 hover:text-white lg:hidden" />
+      <SidebarTrigger className="text-muted-foreground hover:text-foreground lg:hidden" />
 
       <div className="flex min-w-0 items-center gap-2 text-[13px]">
-        <span className="text-white/40">ZOVA</span>
-        <span className="text-white/20">/</span>
-        <span className={cn("font-medium", crumb.detail ? "text-white/60" : "text-white")}>
+        <span className="text-muted-foreground">ZOVA</span>
+        <span className="text-foreground/20">/</span>
+        <span className={cn("font-medium", crumb.detail ? "text-foreground/60" : "text-foreground")}>
           {crumb.section}
         </span>
         {crumb.detail && (
           <>
-            <span className="text-white/20">/</span>
-            <span className="truncate font-medium text-white">{crumb.detail}</span>
+            <span className="text-foreground/20">/</span>
+            <span className="truncate font-medium text-foreground">{crumb.detail}</span>
           </>
         )}
       </div>
@@ -84,13 +84,13 @@ export function DashboardTopbar() {
           type="button"
           onClick={() => setCommandOpen(true)}
           className={cn(
-            "hidden h-9 items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-3 text-[13px] text-white/50",
-            "transition-colors hover:border-white/20 hover:bg-white/[0.05] hover:text-white/80 md:flex md:min-w-[240px]"
+            "hidden h-9 items-center gap-2 rounded-lg border border-border bg-accent/30 px-3 text-[13px] text-muted-foreground",
+            "transition-colors hover:border-border/60 hover:bg-accent/40 hover:text-foreground/80 md:flex md:min-w-[240px]"
           )}
         >
           <Search className="size-3.5" />
           <span className="flex-1 text-left">Search agents, actions…</span>
-          <kbd className="ml-2 rounded border border-white/10 bg-white/[0.04] px-1.5 py-0.5 font-mono text-[10px] text-white/50">
+          <kbd className="ml-2 rounded border border-border bg-accent/30 px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">
             ⌘K
           </kbd>
         </button>
@@ -99,7 +99,7 @@ export function DashboardTopbar() {
           type="button"
           onClick={() => setCommandOpen(true)}
           aria-label="Search"
-          className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-white/60 hover:text-white md:hidden"
+          className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-accent/30 text-muted-foreground hover:text-foreground md:hidden"
         >
           <Search className="size-4" />
         </button>
@@ -107,7 +107,7 @@ export function DashboardTopbar() {
         <NotificationsPopover />
 
         <Avatar className="hidden size-9 rounded-lg sm:flex">
-          <AvatarFallback className="rounded-lg bg-gradient-to-br from-[#a78bfa] to-[#6d28d9] text-[11px] font-semibold text-white">
+          <AvatarFallback className="rounded-lg bg-gradient-to-br from-[#a78bfa] to-[#6d28d9] text-[11px] font-semibold text-primary-foreground">
             {user ? UserInitials(user.name) : "..."}
           </AvatarFallback>
         </Avatar>
@@ -115,7 +115,7 @@ export function DashboardTopbar() {
         <Button
           render={<Link href="/dashboard/create" />}
           nativeButton={false}
-          className="h-9 gap-1.5 bg-gradient-to-b from-[#8b5cf6] to-[#6d28d9] px-3.5 text-[13px] font-medium text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.14),0_10px_30px_-10px_rgba(139,92,246,0.65)] hover:from-[#a78bfa] hover:to-[#7c3aed]"
+          className="h-9 gap-1.5 bg-gradient-to-b from-[#8b5cf6] to-[#6d28d9] px-3.5 text-[13px] font-medium text-primary-foreground shadow-[inset_0_1px_0_0_rgba(255,255,255,0.14),0_10px_30px_-10px_rgba(139,92,246,0.65)] hover:from-[#a78bfa] hover:to-[#7c3aed]"
         >
           <Plus className="size-3.5" />
           <span className="hidden sm:inline">Create Agent</span>
