@@ -74,32 +74,33 @@ export function ConceptBanner() {
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_140%_at_0%_50%,rgba(139,92,246,0.22)_0%,rgba(139,92,246,0.06)_45%,rgba(5,5,10,0)_100%)]"
           />
-          <div className="relative flex items-center gap-4 px-4 py-2.5 md:px-6">
-            <div className="flex min-w-0 flex-1 items-center gap-3">
-              <span className="inline-flex shrink-0 items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#c4b5fd]">
-                <Sparkles className="size-3.5 text-[#a78bfa]" />
-                Concept Interface
+          <div className="relative flex items-center gap-2 px-3 py-2 sm:gap-4 sm:px-4 sm:py-2.5 md:px-6">
+            <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#c4b5fd] sm:text-[11px]">
+                <Sparkles className="size-3 text-[#a78bfa] sm:size-3.5" />
+                <span className="hidden sm:inline">Concept Interface</span>
+                <span className="sm:hidden">Concept</span>
               </span>
-              <span className="hidden h-3 w-px bg-white/[0.1] md:inline-block" />
-              <p className="truncate text-[12.5px] text-white/60">
-                This interface represents our current product direction as we continue building ZOVA.
+              <span className="hidden h-3 w-px bg-white/[0.1] sm:inline-block" />
+              <p className="truncate text-[11px] text-white/60 sm:text-[12.5px]">
+                This interface represents our current product direction.
               </p>
             </div>
             <div className="flex shrink-0 items-center gap-1">
               <Link
-                href="/docs"
-                className="inline-flex items-center gap-1 rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[11.5px] font-medium text-white/80 transition-colors hover:border-[rgba(167,139,250,0.35)] hover:text-white"
+                href="/"
+                className="hidden items-center gap-1 rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[11.5px] font-medium text-white/80 transition-colors hover:border-[rgba(167,139,250,0.35)] hover:text-white sm:inline-flex"
               >
-                Learn more
+                Home
                 <ArrowUpRight className="size-3" />
               </Link>
               <button
                 type="button"
                 onClick={dismiss}
                 aria-label="Dismiss"
-                className="flex h-7 w-7 items-center justify-center rounded-md text-white/45 transition-colors hover:bg-white/[0.05] hover:text-white"
+                className="flex h-6 w-6 items-center justify-center rounded-md text-white/45 transition-colors hover:bg-white/[0.05] hover:text-white sm:h-7 sm:w-7"
               >
-                <X className="size-3.5" />
+                <X className="size-3 sm:size-3.5" />
               </button>
             </div>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
@@ -27,6 +28,7 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ZovaLogo } from "@/components/landing/zova-logo";
 import { cn } from "@/lib/utils";
+import { useUserStore } from "@/stores/dashboard/user-store";
 
 type NavItem = {
   label: string;
@@ -102,8 +104,23 @@ function NavGroup({ label, items, pathname }: { label?: string; items: NavItem[]
   );
 }
 
+function UserInitials(name: string): string {
+  return name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
+}
+
 export function DashboardSidebar() {
   const pathname = usePathname();
+  const { user, fetchUser } = useUserStore();
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
+
   return (
     <Sidebar
       collapsible="icon"
@@ -144,12 +161,16 @@ export function DashboardSidebar() {
             >
               <Avatar className="size-8 shrink-0 rounded-lg">
                 <AvatarFallback className="rounded-lg bg-gradient-to-br from-[#a78bfa] to-[#6d28d9] text-[11px] font-semibold text-white">
-                  OR
+                  {user ? UserInitials(user.name) : "..."}
                 </AvatarFallback>
               </Avatar>
               <span className="flex min-w-0 flex-col text-left leading-tight group-data-[collapsible=icon]:hidden">
-                <span className="truncate text-[13px] font-medium text-white">Ory D.</span>
-                <span className="truncate text-[11px] text-white/40">Owner · Workspace</span>
+                <span className="truncate text-[13px] font-medium text-white">
+                  {user?.name || "Loading..."}
+                </span>
+                <span className="truncate text-[11px] text-white/40">
+                  {user?.email || ""}
+                </span>
               </span>
               <ChevronsUpDown className="ml-auto size-3.5 text-white/40 group-data-[collapsible=icon]:hidden" />
             </SidebarMenuButton>

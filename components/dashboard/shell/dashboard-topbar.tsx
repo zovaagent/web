@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 import { Plus, Search } from "lucide-react";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { useUiStore } from "@/stores/dashboard/ui-store";
 import { useAgentsStore } from "@/stores/dashboard/agents-store";
+import { useUserStore } from "@/stores/dashboard/user-store";
 import { NotificationsPopover } from "./notifications-popover";
 
 const ROUTE_CRUMB: Array<[RegExp, string]> = [
@@ -39,9 +40,23 @@ function useCrumb() {
   }, [pathname, agents]);
 }
 
+function UserInitials(name: string): string {
+  return name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
+}
+
 export function DashboardTopbar() {
   const setCommandOpen = useUiStore((s) => s.setCommandOpen);
   const crumb = useCrumb();
+  const { user, fetchUser } = useUserStore();
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
 
   return (
     <header
@@ -93,7 +108,7 @@ export function DashboardTopbar() {
 
         <Avatar className="hidden size-9 rounded-lg sm:flex">
           <AvatarFallback className="rounded-lg bg-gradient-to-br from-[#a78bfa] to-[#6d28d9] text-[11px] font-semibold text-white">
-            OR
+            {user ? UserInitials(user.name) : "..."}
           </AvatarFallback>
         </Avatar>
 
