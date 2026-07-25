@@ -32,7 +32,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={cn(
-        "h-full antialiased",
+        "dark h-full antialiased",
         manrope.variable,
         geistMono.variable,
         michroma.variable
