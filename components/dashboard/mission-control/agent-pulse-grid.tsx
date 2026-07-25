@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
 import { GlowCard } from "@/components/dashboard/common/glow-card";
 import { PulseDot } from "@/components/dashboard/common/pulse-dot";
 import { AgentAvatar } from "@/components/dashboard/common/agent-avatar";
@@ -20,7 +21,7 @@ export function AgentPulseGrid() {
           href="/dashboard/agents"
           className="text-[11px] font-medium text-[#a78bfa] hover:text-[#c4b5fd]"
         >
-          View all →
+          View all <ChevronRight className="ml-0.5 inline size-3" />
         </Link>
       </div>
       <div className="flex-1 overflow-y-auto px-3 py-2">

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { GlowCard } from "@/components/dashboard/common/glow-card";
 import { PulseDot } from "@/components/dashboard/common/pulse-dot";
 import { useFeedStore } from "@/stores/dashboard/feed-store";
@@ -93,7 +94,7 @@ export function LiveActivityFeed() {
                   {e.agentName}
                 </span>
                 <span className={cn("truncate", KIND_COLOR[e.kind])}>
-                  {e.kind === "tool" && "→ "}
+                  {e.kind === "tool" && <ArrowRight className="inline size-3" />}
                   {e.kind === "reasoning" && "· "}
                   {e.kind === "started" && "▸ "}
                   {e.kind === "completed" && "✓ "}

@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, Check, CheckCircle2, Clock, Info, XCircle } from "lucide-react";
+import { Bell, Check, CheckCircle2, ChevronRight, Clock, Info, XCircle } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useUiStore, type Notification } from "@/stores/dashboard/ui-store";
 import { formatRelative } from "@/lib/dashboard/format";
@@ -118,7 +118,7 @@ export function NotificationsPopover() {
             href="/dashboard/activity"
             className="text-[11.5px] text-white/50 transition-colors hover:text-white"
           >
-            View all activity →
+            View all activity <ChevronRight className="ml-0.5 inline size-3" />
           </a>
         </div>
       </PopoverContent>
