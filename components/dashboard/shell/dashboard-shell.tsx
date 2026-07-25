@@ -7,9 +7,11 @@ import { DashboardTopbar } from "./dashboard-topbar";
 import { AmbientBackground } from "./ambient-background";
 import { CommandPalette } from "./command-palette";
 import { useAgentSimulator } from "@/hooks/dashboard/use-agent-simulator";
+import { useRealtimeNotifications } from "@/hooks/dashboard/use-realtime-notifications";
 
 export function DashboardShell({ children }: { children: ReactNode }) {
   useAgentSimulator();
+  useRealtimeNotifications();
   return (
     <SidebarProvider
       style={

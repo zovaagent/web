@@ -12,6 +12,7 @@ import {
   BookOpen,
   Settings,
   ChevronsUpDown,
+  LogOut,
 } from "lucide-react";
 import {
   Sidebar,
@@ -25,10 +26,17 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ZovaLogo } from "@/components/landing/zova-logo";
 import { cn } from "@/lib/utils";
 import { useUserStore } from "@/stores/dashboard/user-store";
+import { signOut } from "@/lib/auth-client";
 
 type NavItem = {
   label: string;
@@ -155,25 +163,37 @@ export function DashboardSidebar() {
       <SidebarFooter className="border-t border-white/[0.05] p-3">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton
-              tooltip="Account"
-              className="h-11 gap-3 rounded-xl px-2 hover:bg-white/[0.04]"
-            >
-              <Avatar className="size-8 shrink-0 rounded-lg">
-                <AvatarFallback className="rounded-lg bg-gradient-to-br from-[#a78bfa] to-[#6d28d9] text-[11px] font-semibold text-white">
-                  {user ? UserInitials(user.name) : "..."}
-                </AvatarFallback>
-              </Avatar>
-              <span className="flex min-w-0 flex-col text-left leading-tight group-data-[collapsible=icon]:hidden">
-                <span className="truncate text-[13px] font-medium text-white">
-                  {user?.name || "Loading..."}
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                render={
+                  <SidebarMenuButton
+                    tooltip="Account"
+                    className="h-11 gap-3 rounded-xl px-2 hover:bg-white/[0.04]"
+                  />
+                }
+              >
+                <Avatar className="size-8 shrink-0 rounded-lg">
+                  <AvatarFallback className="rounded-lg bg-gradient-to-br from-[#a78bfa] to-[#6d28d9] text-[11px] font-semibold text-white">
+                    {user ? UserInitials(user.name) : "..."}
+                  </AvatarFallback>
+                </Avatar>
+                <span className="flex min-w-0 flex-col text-left leading-tight group-data-[collapsible=icon]:hidden">
+                  <span className="truncate text-[13px] font-medium text-white">
+                    {user?.name || "Loading..."}
+                  </span>
+                  <span className="truncate text-[11px] text-white/40">
+                    {user?.email || ""}
+                  </span>
                 </span>
-                <span className="truncate text-[11px] text-white/40">
-                  {user?.email || ""}
-                </span>
-              </span>
-              <ChevronsUpDown className="ml-auto size-3.5 text-white/40 group-data-[collapsible=icon]:hidden" />
-            </SidebarMenuButton>
+                <ChevronsUpDown className="ml-auto size-3.5 text-white/40 group-data-[collapsible=icon]:hidden" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" side="top" className="w-[--anchor-width]">
+                <DropdownMenuItem onClick={() => signOut()}>
+                  <LogOut className="size-4" />
+                  Log out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>

@@ -12,46 +12,7 @@ export type Notification = {
   read: boolean;
 };
 
-const now = Date.now();
-
-const SEED_NOTIFICATIONS: Notification[] = [
-  {
-    id: "n1",
-    agent: "SDR Sourcer",
-    title: "12 new prospects",
-    message: "Matched your ICP for fintech seed-stage in APAC.",
-    ts: now - 1000 * 60 * 4,
-    kind: "success",
-    read: false,
-  },
-  {
-    id: "n2",
-    agent: "Ops Watcher",
-    title: "Waiting on your approval",
-    message: "Draft launch checklist ready for sign-off.",
-    ts: now - 1000 * 60 * 22,
-    kind: "waiting",
-    read: false,
-  },
-  {
-    id: "n3",
-    agent: "Research Analyst",
-    title: "Weekly synthesis published",
-    message: "Q3 competitive brief · 6 sources, 2 net-new insights.",
-    ts: now - 1000 * 60 * 90,
-    kind: "info",
-    read: false,
-  },
-  {
-    id: "n4",
-    agent: "SEO Writer",
-    title: "Tool call failed",
-    message: "Retried 2× — search provider timeout. Auto-resumed.",
-    ts: now - 1000 * 60 * 60 * 5,
-    kind: "failed",
-    read: true,
-  },
-];
+const MAX_NOTIFICATIONS = 50;
 
 type UiState = {
   commandOpen: boolean;
@@ -59,6 +20,7 @@ type UiState = {
   toggleCommand: () => void;
   notifications: Notification[];
   notificationUnread: number;
+  addNotification: (n: Omit<Notification, "id" | "ts" | "read">) => void;
   markAllRead: () => void;
   markRead: (id?: string) => void;
 };
@@ -67,8 +29,22 @@ export const useUiStore = create<UiState>((set) => ({
   commandOpen: false,
   setCommandOpen: (open) => set({ commandOpen: open }),
   toggleCommand: () => set((s) => ({ commandOpen: !s.commandOpen })),
-  notifications: SEED_NOTIFICATIONS,
-  notificationUnread: SEED_NOTIFICATIONS.filter((n) => !n.read).length,
+  notifications: [],
+  notificationUnread: 0,
+  addNotification: (n) =>
+    set((s) => {
+      const notification: Notification = {
+        ...n,
+        id: `n-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        ts: Date.now(),
+        read: false,
+      };
+      const notifications = [notification, ...s.notifications].slice(0, MAX_NOTIFICATIONS);
+      return {
+        notifications,
+        notificationUnread: notifications.filter((x) => !x.read).length,
+      };
+    }),
   markAllRead: () =>
     set((s) => ({
       notifications: s.notifications.map((n) => ({ ...n, read: true })),
