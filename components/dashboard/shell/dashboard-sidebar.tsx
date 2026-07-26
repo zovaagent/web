@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutDashboard,
   Bot,
@@ -123,6 +123,7 @@ function UserInitials(name: string): string {
 
 export function DashboardSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
   const { user, fetchUser } = useUserStore();
 
   useEffect(() => {
@@ -188,7 +189,10 @@ export function DashboardSidebar() {
                 <ChevronsUpDown className="ml-auto size-3.5 text-sidebar-foreground/40 group-data-[collapsible=icon]:hidden" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" side="top" className="w-[--anchor-width]">
-                <DropdownMenuItem onClick={() => signOut()}>
+                <DropdownMenuItem onClick={async () => {
+  await signOut();
+  router.push("/auth/login");
+}}>
                   <LogOut className="size-4" />
                   Log out
                 </DropdownMenuItem>

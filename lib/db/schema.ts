@@ -80,7 +80,7 @@ export const agents = pgTable("agents", {
   id: uuid("id").primaryKey().defaultRandom(),
   userId: uuid("user_id")
     .notNull()
-    .references(() => profiles.id, { onDelete: "cascade" }),
+    .references(() => user.id, { onDelete: "cascade" }),
   name: text("name").notNull(),
   role: text("role").notNull(),
   objective: text("objective").notNull(),
@@ -110,7 +110,7 @@ export const knowledge = pgTable("knowledge", {
   id: uuid("id").primaryKey().defaultRandom(),
   userId: uuid("user_id")
     .notNull()
-    .references(() => profiles.id, { onDelete: "cascade" }),
+    .references(() => user.id, { onDelete: "cascade" }),
   title: text("title").notNull(),
   type: text("type").notNull(),
   content: text("content"),
@@ -163,7 +163,7 @@ export const activityEvents = pgTable("activity_events", {
     .references(() => agents.id, { onDelete: "cascade" }),
   userId: uuid("user_id")
     .notNull()
-    .references(() => profiles.id, { onDelete: "cascade" }),
+    .references(() => user.id, { onDelete: "cascade" }),
   kind: text("kind").notNull(),
   message: text("message").notNull(),
   metadata: jsonb("metadata").default({}),
@@ -203,7 +203,7 @@ export const profilesRelations = relations(profiles, ({ many }) => ({
 }));
 
 export const agentsRelations = relations(agents, ({ one, many }) => ({
-  user: one(profiles, { fields: [agents.userId], references: [profiles.id] }),
+  user: one(user, { fields: [agents.userId], references: [user.id] }),
   tools: many(agentTools),
   knowledgeLinks: many(agentKnowledge),
   memory: many(agentMemory),
@@ -217,7 +217,7 @@ export const agentToolsRelations = relations(agentTools, ({ one }) => ({
 }));
 
 export const knowledgeRelations = relations(knowledge, ({ one, many }) => ({
-  user: one(profiles, { fields: [knowledge.userId], references: [profiles.id] }),
+  user: one(user, { fields: [knowledge.userId], references: [user.id] }),
   agentLinks: many(agentKnowledge),
 }));
 
@@ -236,7 +236,7 @@ export const executionsRelations = relations(executions, ({ one }) => ({
 
 export const activityEventsRelations = relations(activityEvents, ({ one }) => ({
   agent: one(agents, { fields: [activityEvents.agentId], references: [agents.id] }),
-  user: one(profiles, { fields: [activityEvents.userId], references: [profiles.id] }),
+  user: one(user, { fields: [activityEvents.userId], references: [user.id] }),
 }));
 
 export const agentLogsRelations = relations(agentLogs, ({ one }) => ({
