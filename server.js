@@ -1,7 +1,7 @@
-import { Server } from "socket.io";
-import { createServer } from "http";
-import { parse } from "url";
-import next from "next";
+const { Server } = require("socket.io");
+const { createServer } = require("http");
+const { parse } = require("url");
+const next = require("next");
 
 const dev = process.env.NODE_ENV !== "production";
 const hostname = "0.0.0.0";
@@ -12,7 +12,7 @@ const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
   const httpServer = createServer((req, res) => {
-    const parsedUrl = parse(req.url!, true);
+    const parsedUrl = parse(req.url, true);
     handle(req, res, parsedUrl);
   });
 
@@ -24,21 +24,18 @@ app.prepare().then(() => {
     },
   });
 
-  // Store connected users
-  const connectedUsers = new Map<string, string>(); // socketId -> userId
+  const connectedUsers = new Map();
 
   io.on("connection", (socket) => {
     console.log("Client connected:", socket.id);
 
-    // User joins with their userId
-    socket.on("join", (userId: string) => {
+    socket.on("join", (userId) => {
       connectedUsers.set(socket.id, userId);
       socket.join(`user:${userId}`);
       console.log(`User ${userId} joined`);
     });
 
-    // Agent status update
-    socket.on("agent:status", (data: { agentId: string; status: string; progress?: number }) => {
+    socket.on("agent:status", (data) => {
       const userId = connectedUsers.get(socket.id);
       if (userId) {
         io.to(`user:${userId}`).emit("agent:update", {
@@ -48,8 +45,7 @@ app.prepare().then(() => {
       }
     });
 
-    // Agent log
-    socket.on("agent:log", (data: { agentId: string; level: string; message: string }) => {
+    socket.on("agent:log", (data) => {
       const userId = connectedUsers.get(socket.id);
       if (userId) {
         io.to(`user:${userId}`).emit("agent:log", {
@@ -59,8 +55,7 @@ app.prepare().then(() => {
       }
     });
 
-    // Activity event
-    socket.on("activity", (data: { agentId: string; kind: string; message: string }) => {
+    socket.on("activity", (data) => {
       const userId = connectedUsers.get(socket.id);
       if (userId) {
         io.to(`user:${userId}`).emit("activity:new", {
@@ -76,10 +71,9 @@ app.prepare().then(() => {
     });
   });
 
-  // Make io accessible to API routes
-  (global as any).io = io;
+  (global).io = io;
 
-  httpServer.listen(port, () => {
+  httpServer.listen(port, hostname, () => {
     console.log(`> Ready on http://${hostname}:${port}`);
     console.log(`> Socket.io ready on path /api/socketio`);
   });
