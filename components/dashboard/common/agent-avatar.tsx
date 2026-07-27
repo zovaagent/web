@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { createAvatar } from "@dicebear/core";
 import * as avataaars from "@dicebear/avataaars";
 import { defaultLook, lookToOptions, type AvatarLook } from "@/lib/dashboard/avatar";
-import { localPortraitPath } from "@/lib/dashboard/agent-portrait";
+import { localPortraitPath, pollinationsUrl } from "@/lib/dashboard/agent-portrait";
 import { cn } from "@/lib/utils";
 
 type AgentAvatarProps = {
@@ -39,16 +39,20 @@ export function AgentAvatar({
   className,
   rounded = "xl",
 }: AgentAvatarProps) {
-  const usePortrait = Boolean(imageUrl || role);
-  const [errored, setErrored] = useState(false);
+  const [phase, setPhase] = useState<"online" | "local" | "dicebear">("online");
 
-  const portraitSrc = useMemo(() => {
+  const onlineSrc = useMemo(() => {
     if (imageUrl) return imageUrl;
-    if (role) return localPortraitPath(seed);
+    if (role) return pollinationsUrl(seed, role);
     return "";
   }, [seed, role, imageUrl]);
 
-  const fallbackDataUri = useMemo(() => {
+  const localSrc = useMemo(() => {
+    if (role) return localPortraitPath(seed);
+    return "";
+  }, [seed, role]);
+
+  const dicebearSrc = useMemo(() => {
     const resolved = look ?? defaultLook(seed);
     const avatar = createAvatar(avataaars, {
       seed,
@@ -59,7 +63,13 @@ export function AgentAvatar({
     return avatar.toDataUri();
   }, [seed, look]);
 
-  const showPortrait = usePortrait && !errored;
+  const usePortrait = Boolean(imageUrl || role);
+  const src =
+    !usePortrait || phase === "dicebear"
+      ? dicebearSrc
+      : phase === "local"
+        ? localSrc
+        : onlineSrc;
 
   return (
     <span
@@ -73,17 +83,18 @@ export function AgentAvatar({
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={showPortrait ? portraitSrc : fallbackDataUri}
+        src={src}
         alt=""
         draggable={false}
         loading="eager"
         decoding="async"
         onError={() => {
-          if (usePortrait && !errored) setErrored(true);
+          if (phase === "online" && usePortrait) setPhase("local");
+          else if (phase === "local") setPhase("dicebear");
         }}
         className={cn(
           "h-full w-full select-none",
-          showPortrait ? "object-cover" : "object-contain"
+          usePortrait && phase !== "dicebear" ? "object-cover" : "object-contain"
         )}
       />
     </span>
