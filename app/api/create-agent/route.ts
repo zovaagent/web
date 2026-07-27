@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth-utils";
 import { db } from "@/lib/db";
-import { agents, agentTools, agentMemory } from "@/lib/db/schema";
+import { agents, agentTools, agentMemory, profiles } from "@/lib/db/schema";
 import { llm, getModelForAgent } from "@/lib/llm/client";
 
 export const runtime = "nodejs";
@@ -151,6 +151,19 @@ export async function POST(req: Request) {
     const session = await getSession();
     if (!session?.user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    // Ensure profile exists (prevents FK violation)
+    const existingProfile = await db.query.profiles.findFirst({
+      where: (p, { eq }) => eq(p.id, session.user.id),
+    });
+    if (!existingProfile) {
+      await db.insert(profiles).values({
+        id: session.user.id,
+        email: session.user.email,
+        name: session.user.name,
+        avatarUrl: session.user.image,
+      });
     }
 
     const body: CreateAgentRequest = await req.json();
