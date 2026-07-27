@@ -220,7 +220,8 @@ export async function POST(req: Request) {
     });
   } catch (error) {
     console.error("Agent creation failed:", error);
-    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+    const message = error instanceof Error ? error.message : "Unknown error";
+    return NextResponse.json({ error: message }, { status: 400 });
   }
 }
 
